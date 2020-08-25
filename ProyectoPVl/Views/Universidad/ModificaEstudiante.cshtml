@@ -1,0 +1,20 @@
+﻿@model ProyectoPVl.Models.RetornaEstudianteID_Result
+
+<h3>Modificar a estudiante</h3><br />
+
+<form id="frmModificaEstudiante" method="post">
+	<input type="hidden" id="identificadorFecha" value="@Model.Fecha_Inicio" />
+
+	<div  align="center">
+		<label>Fecha de inicio:</label>
+		<input type="text" name="Fecha_Inicio" id="Fecha_Inicio" class="form-control" />
+	</div>
+    
+	@Html.Partial("VistaComModificarUsuarios")
+<br />
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/Geografia.js"></script>
+	<script src="~/Scripts/Universidad/ModificaEstudiante.js"></script>
+}

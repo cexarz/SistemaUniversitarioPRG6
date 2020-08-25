@@ -1,0 +1,34 @@
+﻿@model ProyectoPVl.Models.RetornaCarreraUniversitariaID_Result
+<h3 align="center">Modificar la carrera</h3><br />
+
+<form id="frmModificarCarrera" method="post">
+
+	<input type="hidden" id="id_Carrera" value="@Model.id_CarreraUniversitaria" />
+
+	<input type="hidden" id="id_DireccionCarrera" value="@Model.id_DireccionCarrera" />
+
+	<div align="center" class="form-group">
+		<label>Nombre de la carrera:</label>
+		<input type="text" name="Nombre" id="Nombre" class="form-control" value="@Model.Nombre" /><br />
+	</div>
+
+	<div align="center" class="form-group">
+		<label>Código del curso:</label>
+		<input type="text" name="Codigo" id="Codigo" class="form-control" value="@Model.Codigo" /><br />
+	</div>
+
+	<div align="center" class="form-group">
+		<label>Dirección de carrera:</label>
+		<select name="DireccionCarrera" id="DireccionCarrera" class="form-control"></select><br />
+	</div>
+
+	<div align="center"class="form-group">
+		<input type="button" value="Modificar" id="btnModificar" class="btn-warning"/>
+	</div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/ModificaCarrera.js"></script>
+}
+

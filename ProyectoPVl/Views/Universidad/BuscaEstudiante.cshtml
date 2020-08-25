@@ -1,0 +1,46 @@
+﻿<h3>Buscar estudiante</h3>
+
+<br />
+
+<div  align="center">
+    <label>Tipo de busqueda:  </label>
+
+    <input type="radio" name="tipoBusqueda" value="N" class="form-check-input" checked /> Nombre
+
+    <input type="radio" name="tipoBusqueda" value="C" class="form-check-input"  /> Cédula
+</div>
+
+<br />
+
+<div  align="center">
+    <label>Campo de busqueda:</label>
+    <input type="text" name="txtBusqueda" id="txtBusqueda" class="form-control" />
+</div>
+
+<br />
+
+<div  align="center">
+	<input type="button" value="Buscar" id="btnBusqueda" class="btn btn-primary" />
+</div>
+
+<br />
+
+<table class="table" id="tblUsuarios" >
+    <thead>
+        <tr style="background-color:WindowFrame">
+            <th>Nombre completo</th>
+            <th>Cedula</th>
+            <th>Carne</th>
+            <th>Provincia</th>
+            <th>Canton</th>
+            <th>Distrito</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+@section scripts{
+    <script src="~/Scripts/Universidad/BuscaEstudiante.js"> </script>
+}

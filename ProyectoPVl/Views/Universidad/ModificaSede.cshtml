@@ -1,0 +1,61 @@
+﻿@model ProyectoPVl.Models.RetornaSedesUniversitariasID_Result
+<h3>Modificar sede universitaria</h3><br />
+
+<form id="frmModificarSede" method="post">
+
+	<input type="hidden" id="id_SedeUniversitaria" value="@Model.id_SedeUniversitaria" />
+
+	<input type="hidden" id="id_Director" value="@Model.id_Funcionario" />
+
+	<input type="hidden" id="identificadorProvincia" value="@Model.id_Provincia" />
+
+	<input type="hidden" id="identificadorCanton" value="@Model.id_Canton" />
+
+	<input type="hidden" id="identificadorDistrito" value="@Model.id_Distrito" />
+
+	<div  align="center">
+		<label>Nombre:</label>
+		<input type="text" name="nombre" id="nombre" class="form-control" value="@Model.Nombre" />
+	</div>
+	<br />
+
+	<div align="center">
+		<label>Código:</label>
+		<input type="text" name="codigo" id="codigo" class="form-control" value="@Model.Codigo"/><br />
+	</div>
+
+	<div  align="center">
+		<label>Director:</label>
+		<select name="Director" id="Director" class="form-control"></select><br />
+	</div>
+
+	<div  align="center">
+		<label>Provincia:</label>
+		<select name="id_Provincia" id="id_Provincia" class="form-control"></select> <br />
+	</div>
+
+	<div  align="center">
+		<label>Cantón:</label>
+		<select name="id_Canton" id="id_Canton" class="form-control"></select><br />
+	</div>
+
+	<div  align="center">
+		<label>Distrito:</label>
+		<select name="id_Distrito" id="id_Distrito" class="form-control"></select>
+	</div><br />
+
+	<div  align="center">
+		<label>Dirección exacta:</label>
+		<input type="text" name="direccionFisica" id="direccionFisica" class="form-control" value="@Model.DireccionFisica" />
+	</div>
+    <br />
+	<div  align="center">
+		<input type="button" value="Modificar" id="btnModificar"  class="btn-warning"/>
+	</div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/Geografia.js"></script>
+	<script src="~/Scripts/Universidad/ModificaSede.js"></script>
+}

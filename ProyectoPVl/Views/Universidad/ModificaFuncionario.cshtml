@@ -1,0 +1,21 @@
+﻿@model ProyectoPVl.Models.RetornaFuncionarioID_Result
+
+<h3>Modificar a funcionario</h3><br />
+
+<form id="frmModificaFuncionario" method="post">
+	<input type="hidden" id="identificadorFecha" value="@Model.FechaContratacion" />
+
+	<div  align="center">
+		<label>Fecha de contratación:</label>
+		<input type="text" name="FechaContratacion" id="FechaContratacion" class="form-control" />
+	</div>
+
+	@Html.Partial("VistaComModificarUsuarios")
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/Geografia.js"></script>
+	<script src="~/Scripts/Universidad/ModificaFuncionario.js"></script>
+}
+

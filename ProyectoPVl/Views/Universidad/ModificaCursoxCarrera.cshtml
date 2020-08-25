@@ -1,0 +1,44 @@
+﻿@model ProyectoPVl.Models.RetornaCursoPorCarreraID_Result
+
+<h3>Modificar curso por carrera</h3><br />
+
+<input type="hidden" id="id_CursoPorCarrera" value="@Model.id_CursoPorCarrera" />
+
+<input type="hidden" id="id_CursoRequisito" value="@Model.id_CursoRequisito" />
+
+<input type="hidden" id="id_CarreraUniversitaria" value="@Model.id_CarreraUniversitaria" />
+
+<input type="hidden" id="id_Curso" value="@Model.id_Curso" />
+
+<form id="frmModificaCursoxCarrera" method="post">
+
+	<div align="center">
+		<label>Carrera:</label>
+		<select name="Carrera" id="Carrera" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Curso:</label>
+		<select name="Curso" id="Curso" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Curso requerido:</label>
+		<select name="CursoRequisito" id="CursoRequisito" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<input type="button" value="Modificar" id="btnModificar" class="btn-warning" />
+	</div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/ModificaCursoxCarrera.js"></script>
+}

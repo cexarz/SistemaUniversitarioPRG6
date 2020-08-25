@@ -1,0 +1,40 @@
+﻿@model ProyectoPVl.Models.RetornaDireccionCarreraID_Result
+<h3>Modificar dirección de carrera</h3><br />
+
+<form id="frmModificarDireccionCarrera" method="post">
+
+	<input type="hidden" id="id_DireccionCarrera" value="@Model.id_DireccionCarrera" />
+
+	<input type="hidden" id="id_Director" value="@Model.id_Director" />
+
+	<input type="hidden" id="id_Subdirector" value="@Model.id_Subdirector" />
+
+	<div  align="center">
+		<label>Nombre de la dirección de carrera:</label>
+		<input type="text" name="Nombre" id="Nombre" class="form-control" value="@Model.Nombre" /><br />
+	</div>
+
+	<div  align="center">
+		<label>Código del curso:</label>
+		<input type="text" name="Codigo" id="Codigo" class="form-control" value="@Model.Codigo" /><br />
+	</div>
+
+	<div  align="center">
+		<label>Director:</label>
+		<select name="Director" id="Director" class="form-control"></select><br />
+	</div>
+
+	<div  align="center">
+		<label>Subdirector:</label>
+		<select name="subDirector" id="subDirector" class="form-control"></select>
+	</div>
+    <br />
+    <div align="center">
+        <input type="button" value="Modificar" id="btnModificar" class="btn-warning" />
+    </div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/ModificaDireccionCarrera.js"></script>
+}

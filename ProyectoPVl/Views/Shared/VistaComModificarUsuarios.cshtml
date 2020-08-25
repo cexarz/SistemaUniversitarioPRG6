@@ -1,0 +1,39 @@
+﻿<input type="hidden" id="identificadorProvincia" value="@Model.id_Provincia" />
+
+<input type="hidden" id="identificadorCanton" value="@Model.id_Canton" />
+
+<input type="hidden" id="identificadorDistrito" value="@Model.id_Distrito" /><br />
+
+<div  align="center">
+	<label>Nombre completo:</label>
+	<input type="text" name="NombreCompleto" id="NombreCompleto" class="form-control" value="@Model.NombreCompleto" /><br />
+</div>
+
+<div  align="center">
+	<label>Cédula:</label>
+	<input type="text" name="Cedula" id="Cedula" class="form-control" value="@Model.Cedula" /><br />
+</div>
+
+<div  align="center">
+	<label>Provincia:</label>
+	<select name="id_Provincia" id="id_Provincia" class="form-control">
+	</select><br />
+</div>
+
+<div  align="center">
+	<label>Cantón:</label>
+	<select name="id_Canton" id="id_Canton" class="form-control"></select><br />
+</div>
+
+<div  align="center">
+	<label>Distrito:</label>
+	<select name="id_Distrito" id="id_Distrito" class="form-control"></select><br />
+</div>
+<br />
+<div  align="center">
+	<input type="submit" value="Modificar" id="btModificar"  class="btn-warning"/>
+</div>
+
+@Html.ValidationSummary(true)
+
+

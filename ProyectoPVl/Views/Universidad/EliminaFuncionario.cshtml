@@ -1,0 +1,21 @@
+﻿@model ProyectoPVl.Models.RetornaFuncionarioID_Result
+
+<h3>Eliminar a funcionario</h3>
+
+<form id="frmEliminaFuncionario" method="post">
+	<input type="hidden" id="identificadorFecha" value="@Model.FechaContratacion" />
+
+	<div align="center">
+		<label>Fecha de contratacion:</label>
+		<input type="text" name="Fecha_Inicio" id="Fecha_Inicio" class="form-control" readonly />
+	</div>
+
+	@Html.Partial("VistaComEliminarUsuarios")
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/Geografia.js"></script>
+	<script src="~/Scripts/Universidad/EliminaUsuario.js"></script>
+}
+

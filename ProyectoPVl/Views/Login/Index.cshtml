@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+    string urlMetodoFormulario = Url.Action("VerificaLogin", "Login");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div class="text-center"> 
+            <form class="form-horizontal" action="@urlMetodoFormulario" method="post">
+                <div class="form-group text-center ">
+                    <label class="control-label col-sm-2"></label>
+                    <div class="col-sm-10"></div>
+                    <h3>Inicio de Sesión</h3>
+                </div>
+                <div class="form-group text-center ">
+                    <label align="center" for="correoElectronico">Usuario</label>
+                    <div align="center">
+                        <input type="text" class="form-control text-center" id="Usuario" name="Usuario" placeholder="Ingrese su usuario" />
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <label align="center" for="contrasena">Contraseña</label>
+                    <div align="center">
+                        <input type="password" class="form-control text-center"
+                               id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary ">Iniciar Sesión</button>
+
+
+                @Html.ValidationSummary(true)
+            </form>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    </div>
+</body>
+</html>

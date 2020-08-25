@@ -1,0 +1,2629 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gestionmatriculaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Canton">
+          <Key>
+            <PropertyRef Name="id_Canton" />
+          </Key>
+          <Property Name="id_Canton" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Provincia" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuarioCrea" Type="varchar" MaxLength="50" />
+          <Property Name="fechaCrea" Type="datetime" />
+          <Property Name="usuarioModifica" Type="varchar" MaxLength="50" />
+          <Property Name="fechaModifica" Type="datetime" />
+          <Property Name="vc_Estado" Type="varchar" MaxLength="3" />
+          <Property Name="id_CantonInec" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarrerasUniversitarias">
+          <Key>
+            <PropertyRef Name="id_CarreraUniversitaria" />
+          </Key>
+          <Property Name="id_CarreraUniversitaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_DireccionCarrera" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CuatrimestreXSede">
+          <Key>
+            <PropertyRef Name="id_CuatrimestreXSede" />
+          </Key>
+          <Property Name="id_CuatrimestreXSede" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_SedeUniversitaria" Type="int" Nullable="false" />
+          <Property Name="PeriodoLectivo" Type="varchar" MaxLength="25" />
+          <Property Name="Ano" Type="varchar" MaxLength="4" />
+          <Property Name="Estado" Type="varchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="id_Curso" />
+          </Key>
+          <Property Name="id_Curso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CursosPorCarreras">
+          <Key>
+            <PropertyRef Name="id_CursoPorCarrera" />
+          </Key>
+          <Property Name="id_Curso" Type="int" Nullable="false" />
+          <Property Name="id_CarreraUniversitaria" Type="int" Nullable="false" />
+          <Property Name="id_CursoRequisito" Type="int" />
+          <Property Name="id_CursoPorCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DireccionesCarreras">
+          <Key>
+            <PropertyRef Name="id_DireccionCarrera" />
+          </Key>
+          <Property Name="id_DireccionCarrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_Director" Type="int" Nullable="false" />
+          <Property Name="id_Subdirector" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="id_Distrito" />
+          </Key>
+          <Property Name="id_Distrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Canton" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuarioCrea" Type="varchar" MaxLength="50" />
+          <Property Name="fechaCrea" Type="datetime" />
+          <Property Name="usuarioModifica" Type="varchar" MaxLength="50" />
+          <Property Name="fechaModifica" Type="datetime" />
+          <Property Name="vc_Estado" Type="varchar" MaxLength="3" />
+          <Property Name="id_DistritoInec" Type="int" />
+        </EntityType>
+        <EntityType Name="Estudiantes">
+          <Key>
+            <PropertyRef Name="id_Estudiante" />
+          </Key>
+          <Property Name="id_Estudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="id_Provincia" Type="int" Nullable="false" />
+          <Property Name="id_Canton" Type="int" Nullable="false" />
+          <Property Name="id_Distrito" Type="int" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="date" Nullable="false" />
+          <Property Name="Carne" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Funcionarios">
+          <Key>
+            <PropertyRef Name="id_Funcionario" />
+          </Key>
+          <Property Name="id_Funcionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="id_Provincia" Type="int" Nullable="false" />
+          <Property Name="id_Canton" Type="int" Nullable="false" />
+          <Property Name="id_Distrito" Type="int" Nullable="false" />
+          <Property Name="FechaContratacion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Matriculas">
+          <Key>
+            <PropertyRef Name="id_Matricula" />
+          </Key>
+          <Property Name="id_Matricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Estudiante" Type="int" Nullable="false" />
+          <Property Name="id_CarreraUniversitaria" Type="int" Nullable="false" />
+          <Property Name="id_OfertaAcademica" Type="int" />
+          <Property Name="Nota" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="OfertasAcademicas">
+          <Key>
+            <PropertyRef Name="id_OfertaAcademica" />
+          </Key>
+          <Property Name="id_OfertaAcademica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_CuatrimestreXSede" Type="int" Nullable="false" />
+          <Property Name="id_Curso" Type="int" Nullable="false" />
+          <Property Name="cuposDisponibles" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="id_Provincia" />
+          </Key>
+          <Property Name="id_Provincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuarioCrea" Type="varchar" MaxLength="50" />
+          <Property Name="fechaCrea" Type="datetime" />
+          <Property Name="usuarioModifica" Type="varchar" MaxLength="50" />
+          <Property Name="fechaModifica" Type="datetime" />
+          <Property Name="vc_Estado" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="SedesUniversitarias">
+          <Key>
+            <PropertyRef Name="id_SedeUniversitaria" />
+          </Key>
+          <Property Name="id_SedeUniversitaria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_Director" Type="int" Nullable="false" />
+          <Property Name="id_Provincia" Type="int" Nullable="false" />
+          <Property Name="id_Canton" Type="int" Nullable="false" />
+          <Property Name="id_Distrito" Type="int" Nullable="false" />
+          <Property Name="DireccionFisica" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="id_Usuario" />
+          </Key>
+          <Property Name="id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TipoUsuario" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="contrasena" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fechaUltimoIngreso" Type="date" />
+        </EntityType>
+        <Association Name="FK__CursosPor__id_Ca__5E8A0973">
+          <End Role="CarrerasUniversitarias" Type="Self.CarrerasUniversitarias" Multiplicity="1" />
+          <End Role="CursosPorCarreras" Type="Self.CursosPorCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Principal>
+            <Dependent Role="CursosPorCarreras">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosPor__id_Cu__5D95E53A">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="CursosPorCarreras" Type="Self.CursosPorCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="CursosPorCarreras">
+              <PropertyRef Name="id_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Matricula__id_Ca__7C1A6C5A">
+          <End Role="CarrerasUniversitarias" Type="Self.CarrerasUniversitarias" Multiplicity="1" />
+          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Matricula__id_Es__7B264821">
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="1" />
+          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="id_Estudiante" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Matricula__id_Of__7D0E9093">
+          <End Role="OfertasAcademicas" Type="Self.OfertasAcademicas" Multiplicity="0..1" />
+          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfertasAcademicas">
+              <PropertyRef Name="id_OfertaAcademica" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_OfertaAcademica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Canton_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="Canton">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarrerasUniversitarias_DireccionesCarreras">
+          <End Role="DireccionesCarreras" Type="Self.DireccionesCarreras" Multiplicity="1" />
+          <End Role="CarrerasUniversitarias" Type="Self.CarrerasUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DireccionesCarreras">
+              <PropertyRef Name="id_DireccionCarrera" />
+            </Principal>
+            <Dependent Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_DireccionCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CuatrimestreXSede_SedesUniversitarias">
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="1" />
+          <End Role="CuatrimestreXSede" Type="Self.CuatrimestreXSede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SedesUniversitarias">
+              <PropertyRef Name="id_SedeUniversitaria" />
+            </Principal>
+            <Dependent Role="CuatrimestreXSede">
+              <PropertyRef Name="id_SedeUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DireccionesCarreras_Funcionarios">
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="1" />
+          <End Role="DireccionesCarreras" Type="Self.DireccionesCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionarios">
+              <PropertyRef Name="id_Funcionario" />
+            </Principal>
+            <Dependent Role="DireccionesCarreras">
+              <PropertyRef Name="id_Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DireccionesCarreras_Funcionarios1">
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="1" />
+          <End Role="DireccionesCarreras" Type="Self.DireccionesCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionarios">
+              <PropertyRef Name="id_Funcionario" />
+            </Principal>
+            <Dependent Role="DireccionesCarreras">
+              <PropertyRef Name="id_Subdirector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="0..1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="id_Distrito" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Funcionarios_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Funcionarios_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="id_Distrito" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="id_Distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Funcionarios_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Matriculas_CarrerasUniversitarias">
+          <End Role="CarrerasUniversitarias" Type="Self.CarrerasUniversitarias" Multiplicity="1" />
+          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Matriculas_Estudiantes">
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="1" />
+          <End Role="Matriculas" Type="Self.Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="id_Estudiante" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasAcademicas_CuatrimestreXSede">
+          <End Role="CuatrimestreXSede" Type="Self.CuatrimestreXSede" Multiplicity="1" />
+          <End Role="OfertasAcademicas" Type="Self.OfertasAcademicas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuatrimestreXSede">
+              <PropertyRef Name="id_CuatrimestreXSede" />
+            </Principal>
+            <Dependent Role="OfertasAcademicas">
+              <PropertyRef Name="id_CuatrimestreXSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasAcademicas_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="OfertasAcademicas" Type="Self.OfertasAcademicas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="OfertasAcademicas">
+              <PropertyRef Name="id_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="id_Distrito" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Funcionarios">
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionarios">
+              <PropertyRef Name="id_Funcionario" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ActualizaNota" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Matricula" Type="int" Mode="In" />
+          <Parameter Name="Nota" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarCarrerasUniversitaria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CarreraUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+          <Parameter Name="id_DireccionCarrera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ActualizarCursosPorCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CursoPorCarrera" Type="int" Mode="In" />
+          <Parameter Name="id_CursoRequisito" Type="int" Mode="In" />
+          <Parameter Name="id_CarreraUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarDireccionesCarreras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_DireccionCarrera" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+          <Parameter Name="id_Director" Type="int" Mode="In" />
+          <Parameter Name="id_Subdirector" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Estudiante" Type="int" Mode="In" />
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="id_Provincia" Type="int" Mode="In" />
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+          <Parameter Name="id_Distrito" Type="int" Mode="In" />
+          <Parameter Name="Fecha_Inicio" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ActualizarFechaCierre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Usuario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ActualizarFuncionario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Funcionario" Type="int" Mode="In" />
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="id_Provincia" Type="int" Mode="In" />
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+          <Parameter Name="id_Distrito" Type="int" Mode="In" />
+          <Parameter Name="FechaContratacion" Type="date" Mode="In" />
+        </Function>
+        <Function Name="ActualizarSedesUniversitarias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_SedeUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+          <Parameter Name="id_Director" Type="int" Mode="In" />
+          <Parameter Name="id_Provincia" Type="int" Mode="In" />
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+          <Parameter Name="id_Distrito" Type="int" Mode="In" />
+          <Parameter Name="DireccionFisica" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AgregarCarrerasUniversitarias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+          <Parameter Name="id_DireccionCarrera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AgregarCuatrimestresxSede" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_SedeUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="PeriodoLectivo" Type="varchar" Mode="In" />
+          <Parameter Name="Ano" Type="varchar" Mode="In" />
+          <Parameter Name="Estado" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AgregarCursos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AgregarCursosPorCarreras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+          <Parameter Name="id_CarreraUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="id_CursoRequisito" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AgregarDireccionesCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+          <Parameter Name="id_Director" Type="int" Mode="In" />
+          <Parameter Name="id_Subdirector" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AgregarEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="id_Provincia" Type="int" Mode="In" />
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+          <Parameter Name="id_Distrito" Type="int" Mode="In" />
+          <Parameter Name="Fecha_Inicio" Type="date" Mode="In" />
+        </Function>
+        <Function Name="AgregarFuncionario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="id_Provincia" Type="int" Mode="In" />
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+          <Parameter Name="id_Distrito" Type="int" Mode="In" />
+          <Parameter Name="FechaContratacion" Type="date" Mode="In" />
+        </Function>
+        <Function Name="AgregarMatricula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Estudiante" Type="int" Mode="In" />
+          <Parameter Name="id_CarreraUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="id_OfertaAcademica" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AgregarOfertasAcademidas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CuatrimestreXSede" Type="int" Mode="In" />
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+          <Parameter Name="cuposDisponibles" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AgregarSedeUniversitaria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+          <Parameter Name="id_Director" Type="int" Mode="In" />
+          <Parameter Name="id_Provincia" Type="int" Mode="In" />
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+          <Parameter Name="id_Distrito" Type="int" Mode="In" />
+          <Parameter Name="DireccionFisica" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AgregarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="TipoUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="contrasena" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ConsultaOfertaAcademica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Carrera" Type="int" Mode="In" />
+          <Parameter Name="Id_SedeUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="Ano" Type="varchar" Mode="In" />
+          <Parameter Name="Cuatrimestre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="EliminaCarrerasUniversitarias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CarreraUniversitaria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminaDirrecionCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_DireccionCarrera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminaEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Estudiante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminaFuncionario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Funcionario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminarCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminarCursoPorCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CursoPorCarrera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EliminaSedesUniversitarias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_SedeUniversitaria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaCantones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_Provincia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaCantonesID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaCarreraUniversitaria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaCarreraUniversitariaCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaCarreraUniversitariaID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CarreraUniversitaria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaCuatrimestreXSede" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RetornaCuatrimestreXSedeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CuatrimestreXSede" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaCursoCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaCursoID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaCursoPorCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CarreraUniversitaria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaCursoPorCarreraID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_CursoPorCarrera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaDireccionCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaDireccionCarreraCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaDireccionCarreraID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_DireccionCarrera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaDistrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaEstudianteID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Estudiante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaEstudiantes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaEstudiantesCed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaFuncionarioCed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaFuncionarioID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Funcionario" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaFuncionarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreCompleto" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaMatriculaIdEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Estudiante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaNotas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_SedeUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="Ano" Type="varchar" Mode="In" />
+          <Parameter Name="Cuatrimestre" Type="varchar" Mode="In" />
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaNotasPorCurso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_SedeUniversitaria" Type="int" Mode="In" />
+          <Parameter Name="Ano" Type="varchar" Mode="In" />
+          <Parameter Name="Cuatrimestre" Type="varchar" Mode="In" />
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaOfertaAcademica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RetornaProvincias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaSedesUniversitarias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaSedesUniversitariasCod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Codigo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RetornaSedesUniversitariasID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_SedeUniversitaria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaUsuarioCorreo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="contrasena" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="gestionmatriculaModelStoreContainer">
+          <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarrerasUniversitarias" EntityType="Self.CarrerasUniversitarias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuatrimestreXSede" EntityType="Self.CuatrimestreXSede" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CursosPorCarreras" EntityType="Self.CursosPorCarreras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DireccionesCarreras" EntityType="Self.DireccionesCarreras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matriculas" EntityType="Self.Matriculas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfertasAcademicas" EntityType="Self.OfertasAcademicas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SedesUniversitarias" EntityType="Self.SedesUniversitarias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CursosPor__id_Ca__5E8A0973" Association="Self.FK__CursosPor__id_Ca__5E8A0973">
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+            <End Role="CursosPorCarreras" EntitySet="CursosPorCarreras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosPor__id_Cu__5D95E53A" Association="Self.FK__CursosPor__id_Cu__5D95E53A">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursosPorCarreras" EntitySet="CursosPorCarreras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Matricula__id_Ca__7C1A6C5A" Association="Self.FK__Matricula__id_Ca__7C1A6C5A">
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Matricula__id_Es__7B264821" Association="Self.FK__Matricula__id_Es__7B264821">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Matricula__id_Of__7D0E9093" Association="Self.FK__Matricula__id_Of__7D0E9093">
+            <End Role="OfertasAcademicas" EntitySet="OfertasAcademicas" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Canton_Provincia" Association="Self.FK_Canton_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Canton" EntitySet="Canton" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarrerasUniversitarias_DireccionesCarreras" Association="Self.FK_CarrerasUniversitarias_DireccionesCarreras">
+            <End Role="DireccionesCarreras" EntitySet="DireccionesCarreras" />
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CuatrimestreXSede_SedesUniversitarias" Association="Self.FK_CuatrimestreXSede_SedesUniversitarias">
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+            <End Role="CuatrimestreXSede" EntitySet="CuatrimestreXSede" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DireccionesCarreras_Funcionarios" Association="Self.FK_DireccionesCarreras_Funcionarios">
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+            <End Role="DireccionesCarreras" EntitySet="DireccionesCarreras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DireccionesCarreras_Funcionarios1" Association="Self.FK_DireccionesCarreras_Funcionarios1">
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+            <End Role="DireccionesCarreras" EntitySet="DireccionesCarreras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Canton" Association="Self.FK_Estudiantes_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Distrito" Association="Self.FK_Estudiantes_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Provincia" Association="Self.FK_Estudiantes_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Funcionarios_Canton" Association="Self.FK_Funcionarios_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Funcionarios_Distrito" Association="Self.FK_Funcionarios_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Funcionarios_Provincia" Association="Self.FK_Funcionarios_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matriculas_CarrerasUniversitarias" Association="Self.FK_Matriculas_CarrerasUniversitarias">
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matriculas_Estudiantes" Association="Self.FK_Matriculas_Estudiantes">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasAcademicas_CuatrimestreXSede" Association="Self.FK_OfertasAcademicas_CuatrimestreXSede">
+            <End Role="CuatrimestreXSede" EntitySet="CuatrimestreXSede" />
+            <End Role="OfertasAcademicas" EntitySet="OfertasAcademicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasAcademicas_Cursos" Association="Self.FK_OfertasAcademicas_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="OfertasAcademicas" EntitySet="OfertasAcademicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Canton" Association="Self.FK_SedesUniversitarias_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Distrito" Association="Self.FK_SedesUniversitarias_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Funcionarios" Association="Self.FK_SedesUniversitarias_Funcionarios">
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Provincia" Association="Self.FK_SedesUniversitarias_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gestionmatriculaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Canton">
+          <Key>
+            <PropertyRef Name="id_Canton" />
+          </Key>
+          <Property Name="id_Canton" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Provincia" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuarioCrea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="usuarioModifica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+          <Property Name="vc_Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="id_CantonInec" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Canton_Provincia" FromRole="Canton" ToRole="Provincia" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK_Distrito_Canton" FromRole="Canton" ToRole="Distrito" />
+          <NavigationProperty Name="Estudiantes" Relationship="Self.FK_Estudiantes_Canton" FromRole="Canton" ToRole="Estudiantes" />
+          <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Funcionarios_Canton" FromRole="Canton" ToRole="Funcionarios" />
+          <NavigationProperty Name="SedesUniversitarias" Relationship="Self.FK_SedesUniversitarias_Canton" FromRole="Canton" ToRole="SedesUniversitarias" />
+        </EntityType>
+        <EntityType Name="CarrerasUniversitarias">
+          <Key>
+            <PropertyRef Name="id_CarreraUniversitaria" />
+          </Key>
+          <Property Name="id_CarreraUniversitaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_DireccionCarrera" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DireccionesCarreras" Relationship="Self.FK_CarrerasUniversitarias_DireccionesCarreras" FromRole="CarrerasUniversitarias" ToRole="DireccionesCarreras" />
+          <NavigationProperty Name="CursosPorCarreras" Relationship="gestionmatriculaModel.FK__CursosPor__id_Ca__5E8A0973" FromRole="CarrerasUniversitarias" ToRole="CursosPorCarreras" />
+          <NavigationProperty Name="Matriculas" Relationship="gestionmatriculaModel.FK__Matricula__id_Ca__7C1A6C5A" FromRole="CarrerasUniversitarias" ToRole="Matriculas" />
+          <NavigationProperty Name="Matriculas1" Relationship="gestionmatriculaModel.FK_Matriculas_CarrerasUniversitarias" FromRole="CarrerasUniversitarias" ToRole="Matriculas" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="id_Curso" />
+          </Key>
+          <Property Name="id_Curso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OfertasAcademicas" Relationship="Self.FK_OfertasAcademicas_Cursos" FromRole="Cursos" ToRole="OfertasAcademicas" />
+          <NavigationProperty Name="CursosPorCarreras" Relationship="gestionmatriculaModel.FK__CursosPor__id_Cu__5D95E53A" FromRole="Cursos" ToRole="CursosPorCarreras" />
+        </EntityType>
+        <EntityType Name="DireccionesCarreras">
+          <Key>
+            <PropertyRef Name="id_DireccionCarrera" />
+          </Key>
+          <Property Name="id_DireccionCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Director" Type="Int32" Nullable="false" />
+          <Property Name="id_Subdirector" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CarrerasUniversitarias" Relationship="Self.FK_CarrerasUniversitarias_DireccionesCarreras" FromRole="DireccionesCarreras" ToRole="CarrerasUniversitarias" />
+          <NavigationProperty Name="Funcionarios" Relationship="Self.FK_DireccionesCarreras_Funcionarios" FromRole="DireccionesCarreras" ToRole="Funcionarios" />
+          <NavigationProperty Name="Funcionarios1" Relationship="Self.FK_DireccionesCarreras_Funcionarios1" FromRole="DireccionesCarreras" ToRole="Funcionarios" />
+        </EntityType>
+        <EntityType Name="Distrito">
+          <Key>
+            <PropertyRef Name="id_Distrito" />
+          </Key>
+          <Property Name="id_Distrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Canton" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuarioCrea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="usuarioModifica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+          <Property Name="vc_Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="id_DistritoInec" Type="Int32" />
+          <NavigationProperty Name="Canton" Relationship="Self.FK_Distrito_Canton" FromRole="Distrito" ToRole="Canton" />
+          <NavigationProperty Name="Estudiantes" Relationship="Self.FK_Estudiantes_Distrito" FromRole="Distrito" ToRole="Estudiantes" />
+          <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Funcionarios_Distrito" FromRole="Distrito" ToRole="Funcionarios" />
+          <NavigationProperty Name="SedesUniversitarias" Relationship="Self.FK_SedesUniversitarias_Distrito" FromRole="Distrito" ToRole="SedesUniversitarias" />
+        </EntityType>
+        <EntityType Name="Estudiantes">
+          <Key>
+            <PropertyRef Name="id_Estudiante" />
+          </Key>
+          <Property Name="id_Estudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Provincia" Type="Int32" Nullable="false" />
+          <Property Name="id_Canton" Type="Int32" Nullable="false" />
+          <Property Name="id_Distrito" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Carne" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Canton" Relationship="Self.FK_Estudiantes_Canton" FromRole="Estudiantes" ToRole="Canton" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK_Estudiantes_Distrito" FromRole="Estudiantes" ToRole="Distrito" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Estudiantes_Provincia" FromRole="Estudiantes" ToRole="Provincia" />
+          <NavigationProperty Name="Matriculas" Relationship="gestionmatriculaModel.FK__Matricula__id_Es__7B264821" FromRole="Estudiantes" ToRole="Matriculas" />
+          <NavigationProperty Name="Matriculas1" Relationship="gestionmatriculaModel.FK_Matriculas_Estudiantes" FromRole="Estudiantes" ToRole="Matriculas" />
+        </EntityType>
+        <EntityType Name="Funcionarios">
+          <Key>
+            <PropertyRef Name="id_Funcionario" />
+          </Key>
+          <Property Name="id_Funcionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Provincia" Type="Int32" Nullable="false" />
+          <Property Name="id_Canton" Type="Int32" Nullable="false" />
+          <Property Name="id_Distrito" Type="Int32" Nullable="false" />
+          <Property Name="FechaContratacion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Canton" Relationship="Self.FK_Funcionarios_Canton" FromRole="Funcionarios" ToRole="Canton" />
+          <NavigationProperty Name="DireccionesCarreras" Relationship="Self.FK_DireccionesCarreras_Funcionarios" FromRole="Funcionarios" ToRole="DireccionesCarreras" />
+          <NavigationProperty Name="DireccionesCarreras1" Relationship="Self.FK_DireccionesCarreras_Funcionarios1" FromRole="Funcionarios" ToRole="DireccionesCarreras" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK_Funcionarios_Distrito" FromRole="Funcionarios" ToRole="Distrito" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_Funcionarios_Provincia" FromRole="Funcionarios" ToRole="Provincia" />
+          <NavigationProperty Name="SedesUniversitarias" Relationship="Self.FK_SedesUniversitarias_Funcionarios" FromRole="Funcionarios" ToRole="SedesUniversitarias" />
+        </EntityType>
+        <EntityType Name="OfertasAcademicas">
+          <Key>
+            <PropertyRef Name="id_OfertaAcademica" />
+          </Key>
+          <Property Name="id_OfertaAcademica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_CuatrimestreXSede" Type="Int32" Nullable="false" />
+          <Property Name="id_Curso" Type="Int32" Nullable="false" />
+          <Property Name="cuposDisponibles" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK_OfertasAcademicas_Cursos" FromRole="OfertasAcademicas" ToRole="Cursos" />
+          <NavigationProperty Name="CuatrimestreXSede" Relationship="gestionmatriculaModel.FK_OfertasAcademicas_CuatrimestreXSede" FromRole="OfertasAcademicas" ToRole="CuatrimestreXSede" />
+          <NavigationProperty Name="Matriculas" Relationship="gestionmatriculaModel.FK__Matricula__id_Of__7D0E9093" FromRole="OfertasAcademicas" ToRole="Matriculas" />
+        </EntityType>
+        <EntityType Name="Provincia">
+          <Key>
+            <PropertyRef Name="id_Provincia" />
+          </Key>
+          <Property Name="id_Provincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuarioCrea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="usuarioModifica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechaModifica" Type="DateTime" Precision="3" />
+          <Property Name="vc_Estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Canton" Relationship="Self.FK_Canton_Provincia" FromRole="Provincia" ToRole="Canton" />
+          <NavigationProperty Name="Estudiantes" Relationship="Self.FK_Estudiantes_Provincia" FromRole="Provincia" ToRole="Estudiantes" />
+          <NavigationProperty Name="Funcionarios" Relationship="Self.FK_Funcionarios_Provincia" FromRole="Provincia" ToRole="Funcionarios" />
+          <NavigationProperty Name="SedesUniversitarias" Relationship="Self.FK_SedesUniversitarias_Provincia" FromRole="Provincia" ToRole="SedesUniversitarias" />
+        </EntityType>
+        <EntityType Name="SedesUniversitarias">
+          <Key>
+            <PropertyRef Name="id_SedeUniversitaria" />
+          </Key>
+          <Property Name="id_SedeUniversitaria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_Director" Type="Int32" Nullable="false" />
+          <Property Name="id_Provincia" Type="Int32" Nullable="false" />
+          <Property Name="id_Canton" Type="Int32" Nullable="false" />
+          <Property Name="id_Distrito" Type="Int32" Nullable="false" />
+          <Property Name="DireccionFisica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Canton" Relationship="Self.FK_SedesUniversitarias_Canton" FromRole="SedesUniversitarias" ToRole="Canton" />
+          <NavigationProperty Name="Distrito" Relationship="Self.FK_SedesUniversitarias_Distrito" FromRole="SedesUniversitarias" ToRole="Distrito" />
+          <NavigationProperty Name="Funcionarios" Relationship="Self.FK_SedesUniversitarias_Funcionarios" FromRole="SedesUniversitarias" ToRole="Funcionarios" />
+          <NavigationProperty Name="Provincia" Relationship="Self.FK_SedesUniversitarias_Provincia" FromRole="SedesUniversitarias" ToRole="Provincia" />
+          <NavigationProperty Name="CuatrimestreXSede" Relationship="gestionmatriculaModel.FK_CuatrimestreXSede_SedesUniversitarias" FromRole="SedesUniversitarias" ToRole="CuatrimestreXSede" />
+          </EntityType>
+        <Association Name="FK_Canton_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Canton" Type="Self.Canton" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="Canton">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distrito_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="0..1" />
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="Distrito">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Funcionarios_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Canton">
+          <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Canton">
+              <PropertyRef Name="id_Canton" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarrerasUniversitarias_DireccionesCarreras">
+          <End Role="DireccionesCarreras" Type="Self.DireccionesCarreras" Multiplicity="1" />
+          <End Role="CarrerasUniversitarias" Type="Self.CarrerasUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DireccionesCarreras">
+              <PropertyRef Name="id_DireccionCarrera" />
+            </Principal>
+            <Dependent Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_DireccionCarrera" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasAcademicas_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="1" />
+          <End Role="OfertasAcademicas" Type="Self.OfertasAcademicas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="OfertasAcademicas">
+              <PropertyRef Name="id_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DireccionesCarreras_Funcionarios">
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="1" />
+          <End Role="DireccionesCarreras" Type="Self.DireccionesCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionarios">
+              <PropertyRef Name="id_Funcionario" />
+            </Principal>
+            <Dependent Role="DireccionesCarreras">
+              <PropertyRef Name="id_Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DireccionesCarreras_Funcionarios1">
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="1" />
+          <End Role="DireccionesCarreras" Type="Self.DireccionesCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionarios">
+              <PropertyRef Name="id_Funcionario" />
+            </Principal>
+            <Dependent Role="DireccionesCarreras">
+              <PropertyRef Name="id_Subdirector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="id_Distrito" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Funcionarios_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="id_Distrito" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="id_Distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Distrito">
+          <End Role="Distrito" Type="Self.Distrito" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distrito">
+              <PropertyRef Name="id_Distrito" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Funcionarios_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="Funcionarios">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Funcionarios">
+          <End Role="Funcionarios" Type="Self.Funcionarios" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionarios">
+              <PropertyRef Name="id_Funcionario" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Director" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SedesUniversitarias_Provincia">
+          <End Role="Provincia" Type="Self.Provincia" Multiplicity="1" />
+          <End Role="SedesUniversitarias" Type="Self.SedesUniversitarias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincia">
+              <PropertyRef Name="id_Provincia" />
+            </Principal>
+            <Dependent Role="SedesUniversitarias">
+              <PropertyRef Name="id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gestionmatriculaEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Canton" EntityType="Self.Canton" />
+          <EntitySet Name="CarrerasUniversitarias" EntityType="Self.CarrerasUniversitarias" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
+          <EntitySet Name="DireccionesCarreras" EntityType="Self.DireccionesCarreras" />
+          <EntitySet Name="Distrito" EntityType="Self.Distrito" />
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" />
+          <EntitySet Name="Funcionarios" EntityType="Self.Funcionarios" />
+          <EntitySet Name="OfertasAcademicas" EntityType="Self.OfertasAcademicas" />
+          <EntitySet Name="Provincia" EntityType="Self.Provincia" />
+          <EntitySet Name="SedesUniversitarias" EntityType="Self.SedesUniversitarias" />
+          <AssociationSet Name="FK_Canton_Provincia" Association="Self.FK_Canton_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Canton" EntitySet="Canton" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distrito_Canton" Association="Self.FK_Distrito_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Distrito" EntitySet="Distrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Canton" Association="Self.FK_Estudiantes_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Funcionarios_Canton" Association="Self.FK_Funcionarios_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Canton" Association="Self.FK_SedesUniversitarias_Canton">
+            <End Role="Canton" EntitySet="Canton" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarrerasUniversitarias_DireccionesCarreras" Association="Self.FK_CarrerasUniversitarias_DireccionesCarreras">
+            <End Role="DireccionesCarreras" EntitySet="DireccionesCarreras" />
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasAcademicas_Cursos" Association="Self.FK_OfertasAcademicas_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="OfertasAcademicas" EntitySet="OfertasAcademicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DireccionesCarreras_Funcionarios" Association="Self.FK_DireccionesCarreras_Funcionarios">
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+            <End Role="DireccionesCarreras" EntitySet="DireccionesCarreras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DireccionesCarreras_Funcionarios1" Association="Self.FK_DireccionesCarreras_Funcionarios1">
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+            <End Role="DireccionesCarreras" EntitySet="DireccionesCarreras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Distrito" Association="Self.FK_Estudiantes_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Funcionarios_Distrito" Association="Self.FK_Funcionarios_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Distrito" Association="Self.FK_SedesUniversitarias_Distrito">
+            <End Role="Distrito" EntitySet="Distrito" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Provincia" Association="Self.FK_Estudiantes_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Funcionarios_Provincia" Association="Self.FK_Funcionarios_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Funcionarios" Association="Self.FK_SedesUniversitarias_Funcionarios">
+            <End Role="Funcionarios" EntitySet="Funcionarios" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SedesUniversitarias_Provincia" Association="Self.FK_SedesUniversitarias_Provincia">
+            <End Role="Provincia" EntitySet="Provincia" />
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+          </AssociationSet>
+          <FunctionImport Name="ActualizarFuncionario">
+            <Parameter Name="id_Funcionario" Mode="In" Type="Int32" />
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="FechaContratacion" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarEstudiante">
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarFuncionario">
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="FechaContratacion" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="EliminaEstudiante">
+          <Parameter Name="id_Estudiante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminaFuncionario">
+          <Parameter Name="id_Funcionario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCantones" ReturnType="Collection(gestionmatriculaModel.RetornaCantones_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_Provincia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCantonesID" ReturnType="Collection(gestionmatriculaModel.RetornaCantonesID_Result)">
+          <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaDistrito" ReturnType="Collection(gestionmatriculaModel.RetornaDistrito_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaProvincias" ReturnType="Collection(gestionmatriculaModel.RetornaProvincias_Result)">
+          <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaEstudianteID" ReturnType="Collection(gestionmatriculaModel.RetornaEstudianteID_Result)">
+          <Parameter Name="id_Estudiante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaEstudiantes" ReturnType="Collection(gestionmatriculaModel.RetornaEstudiantes_Result)">
+          <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaEstudiantesCed" ReturnType="Collection(gestionmatriculaModel.RetornaEstudiantesCed_Result)">
+          <Parameter Name="Cedula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaFuncionarioID" ReturnType="Collection(gestionmatriculaModel.RetornaFuncionarioID_Result)">
+          <Parameter Name="id_Funcionario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaFuncionarios" ReturnType="Collection(gestionmatriculaModel.RetornaFuncionarios_Result)">
+          <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarEstudiante">
+            <Parameter Name="id_Estudiante" Mode="In" Type="Int32" />
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha_Inicio" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarFechaCierre">
+          <Parameter Name="id_Usuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarCurso">
+          <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tblUsuario" EntityType="gestionmatriculaModel.tblUsuario" />
+          <FunctionImport Name="RetornaUsuarioCorreo" ReturnType="Collection(gestionmatriculaModel.RetornaUsuarioCorreo_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarUsuario">
+            <Parameter Name="NombreCompleto" Mode="In" Type="String" />
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="TipoUsuario" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarCursos">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCurso" ReturnType="Collection(gestionmatriculaModel.RetornaCurso_Result)">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCursoID" ReturnType="Collection(gestionmatriculaModel.RetornaCursoID_Result)">
+          <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaFuncionarioCed" ReturnType="Collection(gestionmatriculaModel.RetornaFuncionarioCed_Result)">
+          <Parameter Name="Cedula" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarCurso">
+            <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarDireccionesCarrera">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="id_Director" Mode="In" Type="Int32" />
+            <Parameter Name="id_Subdirector" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCursoCod" ReturnType="Collection(gestionmatriculaModel.RetornaCursoCod_Result)">
+          <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarCarrerasUniversitaria">
+            <Parameter Name="id_CarreraUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="id_DireccionCarrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarDireccionesCarreras">
+            <Parameter Name="id_DireccionCarrera" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="id_Director" Mode="In" Type="Int32" />
+            <Parameter Name="id_Subdirector" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarCarrerasUniversitarias">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="id_DireccionCarrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminaCarrerasUniversitarias">
+          <Parameter Name="id_CarreraUniversitaria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminaDirrecionCarrera">
+          <Parameter Name="id_DireccionCarrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminaSedesUniversitarias">
+          <Parameter Name="id_SedeUniversitaria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCarreraUniversitaria" ReturnType="Collection(gestionmatriculaModel.RetornaCarreraUniversitaria_Result)">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCarreraUniversitariaCod" ReturnType="Collection(gestionmatriculaModel.RetornaCarreraUniversitariaCod_Result)">
+          <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaDireccionCarrera" ReturnType="Collection(gestionmatriculaModel.RetornaDireccionCarrera_Result)">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaDireccionCarreraCod" ReturnType="Collection(gestionmatriculaModel.RetornaDireccionCarreraCod_Result)">
+          <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaSedesUniversitarias" ReturnType="Collection(gestionmatriculaModel.RetornaSedesUniversitarias_Result)">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaSedesUniversitariasCod" ReturnType="Collection(gestionmatriculaModel.RetornaSedesUniversitariasCod_Result)">
+          <Parameter Name="Codigo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaDireccionCarreraID" ReturnType="Collection(gestionmatriculaModel.RetornaDireccionCarreraID_Result)">
+          <Parameter Name="id_DireccionCarrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCarreraUniversitariaID" ReturnType="Collection(gestionmatriculaModel.RetornaCarreraUniversitariaID_Result)">
+          <Parameter Name="id_CarreraUniversitaria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaSedesUniversitariasID" ReturnType="Collection(gestionmatriculaModel.RetornaSedesUniversitariasID_Result)">
+          <Parameter Name="id_SedeUniversitaria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarSedesUniversitarias">
+            <Parameter Name="id_SedeUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="id_Director" Mode="In" Type="Int32" />
+            <Parameter Name="id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="DireccionFisica" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarSedeUniversitaria">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="String" />
+            <Parameter Name="id_Director" Mode="In" Type="Int32" />
+            <Parameter Name="id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="DireccionFisica" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarCursosPorCarreras">
+            <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+            <Parameter Name="id_CarreraUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="id_CursoRequisito" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CursosPorCarreras" EntityType="gestionmatriculaModel.CursosPorCarreras" />
+          <AssociationSet Name="FK__CursosPor__id_Ca__5E8A0973" Association="gestionmatriculaModel.FK__CursosPor__id_Ca__5E8A0973">
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+            <End Role="CursosPorCarreras" EntitySet="CursosPorCarreras" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CursosPor__id_Cu__5D95E53A" Association="gestionmatriculaModel.FK__CursosPor__id_Cu__5D95E53A">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="CursosPorCarreras" EntitySet="CursosPorCarreras" />
+          </AssociationSet>
+          <FunctionImport Name="ActualizarCursosPorCarrera">
+            <Parameter Name="id_CursoPorCarrera" Mode="In" Type="Int32" />
+            <Parameter Name="id_CursoRequisito" Mode="In" Type="Int32" />
+            <Parameter Name="id_CarreraUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCursoPorCarrera" ReturnType="Collection(gestionmatriculaModel.RetornaCursoPorCarrera_Result)">
+          <Parameter Name="id_CarreraUniversitaria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCursoPorCarreraID" ReturnType="Collection(gestionmatriculaModel.RetornaCursoPorCarreraID_Result)">
+          <Parameter Name="id_CursoPorCarrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarCursoPorCarrera">
+          <Parameter Name="id_CursoPorCarrera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CuatrimestreXSede" EntityType="gestionmatriculaModel.CuatrimestreXSede" />
+          <AssociationSet Name="FK_CuatrimestreXSede_SedesUniversitarias" Association="gestionmatriculaModel.FK_CuatrimestreXSede_SedesUniversitarias">
+            <End Role="SedesUniversitarias" EntitySet="SedesUniversitarias" />
+            <End Role="CuatrimestreXSede" EntitySet="CuatrimestreXSede" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasAcademicas_CuatrimestreXSede" Association="gestionmatriculaModel.FK_OfertasAcademicas_CuatrimestreXSede">
+            <End Role="CuatrimestreXSede" EntitySet="CuatrimestreXSede" />
+            <End Role="OfertasAcademicas" EntitySet="OfertasAcademicas" />
+          </AssociationSet>
+          <FunctionImport Name="AgregarCuatrimestresxSede">
+            <Parameter Name="id_SedeUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="PeriodoLectivo" Mode="In" Type="String" />
+            <Parameter Name="Ano" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaCuatrimestreXSede" ReturnType="Collection(gestionmatriculaModel.RetornaCuatrimestreXSede_Result)" />
+          <FunctionImport Name="RetornaCuatrimestreXSedeID" ReturnType="Collection(gestionmatriculaModel.RetornaCuatrimestreXSedeID_Result)">
+          <Parameter Name="id_CuatrimestreXSede" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarOfertasAcademidas">
+            <Parameter Name="id_CuatrimestreXSede" Mode="In" Type="Int32" />
+            <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+            <Parameter Name="cuposDisponibles" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaOfertaAcademica" ReturnType="Collection(gestionmatriculaModel.RetornaOfertaAcademica_Result)" />
+          <FunctionImport Name="ConsultaOfertaAcademica" ReturnType="Collection(gestionmatriculaModel.ConsultaOfertaAcademica_Result)">
+            <Parameter Name="Id_Carrera" Mode="In" Type="Int32" />
+            <Parameter Name="Id_SedeUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="Ano" Mode="In" Type="String" />
+            <Parameter Name="Cuatrimestre" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Matriculas" EntityType="gestionmatriculaModel.Matriculas" />
+          <AssociationSet Name="FK__Matricula__id_Ca__7C1A6C5A" Association="gestionmatriculaModel.FK__Matricula__id_Ca__7C1A6C5A">
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matriculas_CarrerasUniversitarias" Association="gestionmatriculaModel.FK_Matriculas_CarrerasUniversitarias">
+            <End Role="CarrerasUniversitarias" EntitySet="CarrerasUniversitarias" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Matricula__id_Es__7B264821" Association="gestionmatriculaModel.FK__Matricula__id_Es__7B264821">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Matriculas_Estudiantes" Association="gestionmatriculaModel.FK_Matriculas_Estudiantes">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Matricula__id_Of__7D0E9093" Association="gestionmatriculaModel.FK__Matricula__id_Of__7D0E9093">
+            <End Role="OfertasAcademicas" EntitySet="OfertasAcademicas" />
+            <End Role="Matriculas" EntitySet="Matriculas" />
+          </AssociationSet>
+          <FunctionImport Name="AgregarMatricula">
+            <Parameter Name="id_Estudiante" Mode="In" Type="Int32" />
+            <Parameter Name="id_CarreraUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="id_OfertaAcademica" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaMatriculaIdEstudiante" ReturnType="Collection(gestionmatriculaModel.RetornaMatriculaIdEstudiante_Result)">
+          <Parameter Name="id_Estudiante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaNotasPorCurso" ReturnType="Collection(gestionmatriculaModel.RetornaNotasPorCurso_Result)">
+            <Parameter Name="id_SedeUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="Ano" Mode="In" Type="String" />
+            <Parameter Name="Cuatrimestre" Mode="In" Type="String" />
+            <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizaNota">
+            <Parameter Name="id_Matricula" Mode="In" Type="Int32" />
+            <Parameter Name="Nota" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaNotas" ReturnType="Collection(gestionmatriculaModel.RetornaNotas_Result)">
+            <Parameter Name="id_SedeUniversitaria" Mode="In" Type="Int32" />
+            <Parameter Name="Ano" Mode="In" Type="String" />
+            <Parameter Name="Cuatrimestre" Mode="In" Type="String" />
+            <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="RetornaCantones_Result">
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuarioCrea" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaCrea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuarioModifica" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaModifica" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_Estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_CantonInec" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RetornaCantonesID_Result">
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuarioCrea" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaCrea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuarioModifica" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaModifica" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_Estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_CantonInec" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="RetornaDistrito_Result">
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="true" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuarioCrea" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaCrea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuarioModifica" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaModifica" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_Estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_DistritoInec" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RetornaProvincias_Result">
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuarioCrea" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaCrea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuarioModifica" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fechaModifica" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_Estado" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="RetornaEstudianteID_Result">
+          <Property Type="Int32" Name="id_Estudiante" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Inicio" Nullable="false" />
+          <Property Type="String" Name="Carne" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="RetornaEstudiantes_Result">
+          <Property Type="Int32" Name="id_Estudiante" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Inicio" Nullable="false" />
+          <Property Type="String" Name="Carne" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="RetornaEstudiantesCed_Result">
+          <Property Type="Int32" Name="id_Estudiante" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha_Inicio" Nullable="false" />
+          <Property Type="String" Name="Carne" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="RetornaFuncionarioID_Result">
+          <Property Type="Int32" Name="id_Funcionario" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="DateTime" Name="FechaContratacion" Nullable="false" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="RetornaFuncionarios_Result">
+          <Property Type="Int32" Name="id_Funcionario" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="DateTime" Name="FechaContratacion" Nullable="false" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tblUsuario">
+          <Key>
+            <PropertyRef Name="id_Usuario" />
+          </Key>
+          <Property Name="id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCompleto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TipoUsuario" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fechaUltimoIngreso" Type="DateTime" Precision="0" />
+        </EntityType>
+        <ComplexType Name="RetornaUsuarioCorreo_Result">
+          <Property Type="Int32" Name="id_Usuario" Nullable="false" />
+          <Property Type="String" Name="nombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="contrasena" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TipoUsuario" Nullable="false" MaxLength="150" />
+          <Property Type="DateTime" Name="fechaUltimoIngreso" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RetornaCurso_Result">
+          <Property Type="Int32" Name="id_Curso" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="RetornaCursoID_Result">
+          <Property Type="Int32" Name="id_Curso" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="RetornaFuncionarioCed_Result">
+          <Property Type="Int32" Name="id_Funcionario" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="DateTime" Name="FechaContratacion" Nullable="false" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="RetornaCursoCod_Result">
+          <Property Type="Int32" Name="id_Curso" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="RetornaCarreraUniversitaria_Result">
+          <Property Type="Int32" Name="id_CarreraUniversitaria" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="DirecciónCarrera" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="RetornaCarreraUniversitariaCod_Result">
+          <Property Type="Int32" Name="id_CarreraUniversitaria" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="DirecciónCarrera" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="RetornaDireccionCarrera_Result">
+          <Property Type="Int32" Name="id_DireccionCarrera" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Director" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Subdirector" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="RetornaDireccionCarreraCod_Result">
+          <Property Type="Int32" Name="id_DireccionCarrera" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Director" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Subdirector" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="RetornaSedesUniversitarias_Result">
+          <Property Type="Int32" Name="id_SedeUniversitaria" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Director" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DireccionFisica" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="RetornaSedesUniversitariasCod_Result">
+          <Property Type="Int32" Name="id_SedeUniversitaria" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Director" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DireccionFisica" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="RetornaDireccionCarreraID_Result">
+          <Property Type="Int32" Name="id_DireccionCarrera" Nullable="false" />
+          <Property Type="Int32" Name="id_Director" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Director" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="id_Subdirector" Nullable="false" />
+          <Property Type="String" Name="Subdirector" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="RetornaCarreraUniversitariaID_Result">
+          <Property Type="Int32" Name="id_CarreraUniversitaria" Nullable="false" />
+          <Property Type="Int32" Name="id_DireccionCarrera" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="DirecciónCarrera" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="RetornaSedesUniversitariasID_Result">
+          <Property Type="Int32" Name="id_SedeUniversitaria" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="id_Funcionario" Nullable="false" />
+          <Property Type="String" Name="Director" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="String" Name="Distrito" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DireccionFisica" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <EntityType Name="CursosPorCarreras">
+          <Key>
+            <PropertyRef Name="id_CursoPorCarrera" />
+          </Key>
+          <Property Name="id_Curso" Type="Int32" Nullable="false" />
+          <Property Name="id_CarreraUniversitaria" Type="Int32" Nullable="false" />
+          <Property Name="id_CursoRequisito" Type="Int32" />
+          <Property Name="id_CursoPorCarrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="CarrerasUniversitarias" Relationship="gestionmatriculaModel.FK__CursosPor__id_Ca__5E8A0973" FromRole="CursosPorCarreras" ToRole="CarrerasUniversitarias" />
+          <NavigationProperty Name="Cursos" Relationship="gestionmatriculaModel.FK__CursosPor__id_Cu__5D95E53A" FromRole="CursosPorCarreras" ToRole="Cursos" />
+        </EntityType>
+        <Association Name="FK__CursosPor__id_Ca__5E8A0973">
+          <End Type="gestionmatriculaModel.CarrerasUniversitarias" Role="CarrerasUniversitarias" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.CursosPorCarreras" Role="CursosPorCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Principal>
+            <Dependent Role="CursosPorCarreras">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CursosPor__id_Cu__5D95E53A">
+          <End Type="gestionmatriculaModel.Cursos" Role="Cursos" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.CursosPorCarreras" Role="CursosPorCarreras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="id_Curso" />
+            </Principal>
+            <Dependent Role="CursosPorCarreras">
+              <PropertyRef Name="id_Curso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="RetornaCursoPorCarrera_Result">
+          <Property Type="Int32" Name="id_CursoPorCarrera" Nullable="false" />
+          <Property Type="String" Name="Curso" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Curso_Requerido" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="RetornaCursoPorCarreraID_Result">
+          <Property Type="Int32" Name="id_CursoPorCarrera" Nullable="false" />
+          <Property Type="Int32" Name="id_Curso" Nullable="false" />
+          <Property Type="Int32" Name="id_CursoRequisito" Nullable="true" />
+          <Property Type="Int32" Name="id_CarreraUniversitaria" Nullable="false" />
+          <Property Type="String" Name="Curso_Requisito" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Curso" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Carrera_Universitaria" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="CuatrimestreXSede">
+          <Key>
+            <PropertyRef Name="id_CuatrimestreXSede" />
+          </Key>
+          <Property Name="id_CuatrimestreXSede" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_SedeUniversitaria" Type="Int32" Nullable="false" />
+          <Property Name="PeriodoLectivo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Ano" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SedesUniversitarias" Relationship="gestionmatriculaModel.FK_CuatrimestreXSede_SedesUniversitarias" FromRole="CuatrimestreXSede" ToRole="SedesUniversitarias" />
+          <NavigationProperty Name="OfertasAcademicas" Relationship="gestionmatriculaModel.FK_OfertasAcademicas_CuatrimestreXSede" FromRole="CuatrimestreXSede" ToRole="OfertasAcademicas" />
+        </EntityType>
+        <Association Name="FK_CuatrimestreXSede_SedesUniversitarias">
+          <End Type="gestionmatriculaModel.SedesUniversitarias" Role="SedesUniversitarias" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.CuatrimestreXSede" Role="CuatrimestreXSede" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SedesUniversitarias">
+              <PropertyRef Name="id_SedeUniversitaria" />
+            </Principal>
+            <Dependent Role="CuatrimestreXSede">
+              <PropertyRef Name="id_SedeUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasAcademicas_CuatrimestreXSede">
+          <End Type="gestionmatriculaModel.CuatrimestreXSede" Role="CuatrimestreXSede" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.OfertasAcademicas" Role="OfertasAcademicas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuatrimestreXSede">
+              <PropertyRef Name="id_CuatrimestreXSede" />
+            </Principal>
+            <Dependent Role="OfertasAcademicas">
+              <PropertyRef Name="id_CuatrimestreXSede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="RetornaCuatrimestreXSede_Result">
+          <Property Type="Int32" Name="id_CuatrimestreXSede" Nullable="false" />
+          <Property Type="Int32" Name="id_SedeUniversitaria" Nullable="false" />
+          <Property Type="String" Name="SedeUniversitaria" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="PeriodoLectivo" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ano" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="12" />
+        </ComplexType>
+        <ComplexType Name="RetornaCuatrimestreXSedeID_Result">
+          <Property Type="Int32" Name="id_CuatrimestreXSede" Nullable="false" />
+          <Property Type="Int32" Name="id_SedeUniversitaria" Nullable="false" />
+          <Property Type="String" Name="SedeUniversitaria" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="PeriodoLectivo" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ano" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="12" />
+        </ComplexType>
+        <ComplexType Name="RetornaOfertaAcademica_Result">
+          <Property Type="Int32" Name="id_OfertaAcademica" Nullable="false" />
+          <Property Type="Int32" Name="id_CuatrimestreXSede" Nullable="false" />
+          <Property Type="Int32" Name="id_Curso" Nullable="false" />
+          <Property Type="String" Name="Curso" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="cuposDisponibles" Nullable="false" />
+          <Property Type="String" Name="PeriodoLectivo" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Año" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="NombreSede" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="ConsultaOfertaAcademica_Result">
+          <Property Type="Int32" Name="Id_Curso" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="id_OfertaAcademica" Nullable="false" />
+          <Property Type="Int32" Name="CuposDisponibles" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Matriculas">
+          <Key>
+            <PropertyRef Name="id_Matricula" />
+          </Key>
+          <Property Name="id_Matricula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Estudiante" Type="Int32" Nullable="false" />
+          <Property Name="id_CarreraUniversitaria" Type="Int32" Nullable="false" />
+          <Property Name="id_OfertaAcademica" Type="Int32" />
+          <Property Name="Nota" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CarrerasUniversitarias" Relationship="gestionmatriculaModel.FK__Matricula__id_Ca__7C1A6C5A" FromRole="Matriculas" ToRole="CarrerasUniversitarias" />
+          <NavigationProperty Name="CarrerasUniversitarias1" Relationship="gestionmatriculaModel.FK_Matriculas_CarrerasUniversitarias" FromRole="Matriculas" ToRole="CarrerasUniversitarias" />
+          <NavigationProperty Name="Estudiantes" Relationship="gestionmatriculaModel.FK__Matricula__id_Es__7B264821" FromRole="Matriculas" ToRole="Estudiantes" />
+          <NavigationProperty Name="Estudiantes1" Relationship="gestionmatriculaModel.FK_Matriculas_Estudiantes" FromRole="Matriculas" ToRole="Estudiantes" />
+          <NavigationProperty Name="OfertasAcademicas" Relationship="gestionmatriculaModel.FK__Matricula__id_Of__7D0E9093" FromRole="Matriculas" ToRole="OfertasAcademicas" />
+        </EntityType>
+        <Association Name="FK__Matricula__id_Ca__7C1A6C5A">
+          <End Type="gestionmatriculaModel.CarrerasUniversitarias" Role="CarrerasUniversitarias" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.Matriculas" Role="Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Matriculas_CarrerasUniversitarias">
+          <End Type="gestionmatriculaModel.CarrerasUniversitarias" Role="CarrerasUniversitarias" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.Matriculas" Role="Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarrerasUniversitarias">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_CarreraUniversitaria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Matricula__id_Es__7B264821">
+          <End Type="gestionmatriculaModel.Estudiantes" Role="Estudiantes" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.Matriculas" Role="Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="id_Estudiante" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Matriculas_Estudiantes">
+          <End Type="gestionmatriculaModel.Estudiantes" Role="Estudiantes" Multiplicity="1" />
+          <End Type="gestionmatriculaModel.Matriculas" Role="Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="id_Estudiante" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_Estudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Matricula__id_Of__7D0E9093">
+          <End Type="gestionmatriculaModel.OfertasAcademicas" Role="OfertasAcademicas" Multiplicity="0..1" />
+          <End Type="gestionmatriculaModel.Matriculas" Role="Matriculas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfertasAcademicas">
+              <PropertyRef Name="id_OfertaAcademica" />
+            </Principal>
+            <Dependent Role="Matriculas">
+              <PropertyRef Name="id_OfertaAcademica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="RetornaMatriculaIdEstudiante_Result">
+          <Property Type="Int32" Name="id_Estudiante" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="id_CarreraUniversitaria" Nullable="false" />
+          <Property Type="Int32" Name="id_OFertaAcademica" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="RetornaNotasPorCurso_Result">
+          <Property Type="Int32" Name="id_Matricula" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Nota" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="RetornaNotas_Result">
+          <Property Type="Int32" Name="id_Matricula" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Nota" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gestionmatriculaModelStoreContainer" CdmEntityContainer="gestionmatriculaEntities3">
+          <EntitySetMapping Name="Canton">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.Canton">
+              <MappingFragment StoreEntitySet="Canton">
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+                <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
+                <ScalarProperty Name="id_CantonInec" ColumnName="id_CantonInec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarrerasUniversitarias">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.CarrerasUniversitarias">
+              <MappingFragment StoreEntitySet="CarrerasUniversitarias">
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="id_DireccionCarrera" ColumnName="id_DireccionCarrera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.Cursos">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DireccionesCarreras">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.DireccionesCarreras">
+              <MappingFragment StoreEntitySet="DireccionesCarreras">
+                <ScalarProperty Name="id_DireccionCarrera" ColumnName="id_DireccionCarrera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="id_Director" ColumnName="id_Director" />
+                <ScalarProperty Name="id_Subdirector" ColumnName="id_Subdirector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distrito">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.Distrito">
+              <MappingFragment StoreEntitySet="Distrito">
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+                <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
+                <ScalarProperty Name="id_DistritoInec" ColumnName="id_DistritoInec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudiantes">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.Estudiantes">
+              <MappingFragment StoreEntitySet="Estudiantes">
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Carne" ColumnName="Carne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funcionarios">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.Funcionarios">
+              <MappingFragment StoreEntitySet="Funcionarios">
+                <ScalarProperty Name="id_Funcionario" ColumnName="id_Funcionario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfertasAcademicas">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.OfertasAcademicas">
+              <MappingFragment StoreEntitySet="OfertasAcademicas">
+                <ScalarProperty Name="id_OfertaAcademica" ColumnName="id_OfertaAcademica" />
+                <ScalarProperty Name="id_CuatrimestreXSede" ColumnName="id_CuatrimestreXSede" />
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="cuposDisponibles" ColumnName="cuposDisponibles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincia">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.Provincia">
+              <MappingFragment StoreEntitySet="Provincia">
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+                <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SedesUniversitarias">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.SedesUniversitarias">
+              <MappingFragment StoreEntitySet="SedesUniversitarias">
+                <ScalarProperty Name="id_SedeUniversitaria" ColumnName="id_SedeUniversitaria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="id_Director" ColumnName="id_Director" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="DireccionFisica" ColumnName="DireccionFisica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarFuncionario" FunctionName="gestionmatriculaModel.Store.ActualizarFuncionario" />
+          <FunctionImportMapping FunctionImportName="AgregarEstudiante" FunctionName="gestionmatriculaModel.Store.AgregarEstudiante" />
+          <FunctionImportMapping FunctionImportName="AgregarFuncionario" FunctionName="gestionmatriculaModel.Store.AgregarFuncionario" />
+          <FunctionImportMapping FunctionImportName="EliminaEstudiante" FunctionName="gestionmatriculaModel.Store.EliminaEstudiante" />
+          <FunctionImportMapping FunctionImportName="EliminaFuncionario" FunctionName="gestionmatriculaModel.Store.EliminaFuncionario" />
+          <FunctionImportMapping FunctionImportName="RetornaCantones" FunctionName="gestionmatriculaModel.Store.RetornaCantones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCantones_Result">
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+                <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
+                <ScalarProperty Name="id_CantonInec" ColumnName="id_CantonInec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaCantonesID" FunctionName="gestionmatriculaModel.Store.RetornaCantonesID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCantonesID_Result">
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+                <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
+                <ScalarProperty Name="id_CantonInec" ColumnName="id_CantonInec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaDistrito" FunctionName="gestionmatriculaModel.Store.RetornaDistrito">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaDistrito_Result">
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+                <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
+                <ScalarProperty Name="id_DistritoInec" ColumnName="id_DistritoInec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaProvincias" FunctionName="gestionmatriculaModel.Store.RetornaProvincias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaProvincias_Result">
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioModifica" ColumnName="usuarioModifica" />
+                <ScalarProperty Name="fechaModifica" ColumnName="fechaModifica" />
+                <ScalarProperty Name="vc_Estado" ColumnName="vc_Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaEstudianteID" FunctionName="gestionmatriculaModel.Store.RetornaEstudianteID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaEstudianteID_Result">
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Carne" ColumnName="Carne" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaEstudiantes" FunctionName="gestionmatriculaModel.Store.RetornaEstudiantes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaEstudiantes_Result">
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Carne" ColumnName="Carne" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaEstudiantesCed" FunctionName="gestionmatriculaModel.Store.RetornaEstudiantesCed">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaEstudiantesCed_Result">
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Carne" ColumnName="Carne" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaFuncionarioID" FunctionName="gestionmatriculaModel.Store.RetornaFuncionarioID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaFuncionarioID_Result">
+                <ScalarProperty Name="id_Funcionario" ColumnName="id_Funcionario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaFuncionarios" FunctionName="gestionmatriculaModel.Store.RetornaFuncionarios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaFuncionarios_Result">
+                <ScalarProperty Name="id_Funcionario" ColumnName="id_Funcionario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarEstudiante" FunctionName="gestionmatriculaModel.Store.ActualizarEstudiante" />
+          <FunctionImportMapping FunctionImportName="ActualizarFechaCierre" FunctionName="gestionmatriculaModel.Store.ActualizarFechaCierre" />
+          <FunctionImportMapping FunctionImportName="EliminarCurso" FunctionName="gestionmatriculaModel.Store.EliminarCurso" />
+          <EntitySetMapping Name="tblUsuario">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.tblUsuario">
+              <MappingFragment StoreEntitySet="tblUsuario">
+                <ScalarProperty Name="fechaUltimoIngreso" ColumnName="fechaUltimoIngreso" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RetornaUsuarioCorreo" FunctionName="gestionmatriculaModel.Store.RetornaUsuarioCorreo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaUsuarioCorreo_Result">
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+                <ScalarProperty Name="fechaUltimoIngreso" ColumnName="fechaUltimoIngreso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgregarUsuario" FunctionName="gestionmatriculaModel.Store.AgregarUsuario" />
+          <FunctionImportMapping FunctionImportName="AgregarCursos" FunctionName="gestionmatriculaModel.Store.AgregarCursos" />
+          <FunctionImportMapping FunctionImportName="RetornaCurso" FunctionName="gestionmatriculaModel.Store.RetornaCurso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCurso_Result">
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaCursoID" FunctionName="gestionmatriculaModel.Store.RetornaCursoID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCursoID_Result">
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaFuncionarioCed" FunctionName="gestionmatriculaModel.Store.RetornaFuncionarioCed">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaFuncionarioCed_Result">
+                <ScalarProperty Name="id_Funcionario" ColumnName="id_Funcionario" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarCurso" FunctionName="gestionmatriculaModel.Store.ActualizarCurso" />
+          <FunctionImportMapping FunctionImportName="AgregarDireccionesCarrera" FunctionName="gestionmatriculaModel.Store.AgregarDireccionesCarrera" />
+          <FunctionImportMapping FunctionImportName="RetornaCursoCod" FunctionName="gestionmatriculaModel.Store.RetornaCursoCod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCursoCod_Result">
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarCarrerasUniversitaria" FunctionName="gestionmatriculaModel.Store.ActualizarCarrerasUniversitaria" />
+          <FunctionImportMapping FunctionImportName="ActualizarDireccionesCarreras" FunctionName="gestionmatriculaModel.Store.ActualizarDireccionesCarreras" />
+          <FunctionImportMapping FunctionImportName="AgregarCarrerasUniversitarias" FunctionName="gestionmatriculaModel.Store.AgregarCarrerasUniversitarias" />
+          <FunctionImportMapping FunctionImportName="EliminaCarrerasUniversitarias" FunctionName="gestionmatriculaModel.Store.EliminaCarrerasUniversitarias" />
+          <FunctionImportMapping FunctionImportName="EliminaDirrecionCarrera" FunctionName="gestionmatriculaModel.Store.EliminaDirrecionCarrera" />
+          <FunctionImportMapping FunctionImportName="EliminaSedesUniversitarias" FunctionName="gestionmatriculaModel.Store.EliminaSedesUniversitarias" />
+          <FunctionImportMapping FunctionImportName="RetornaCarreraUniversitaria" FunctionName="gestionmatriculaModel.Store.RetornaCarreraUniversitaria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCarreraUniversitaria_Result">
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="DirecciónCarrera" ColumnName="DirecciónCarrera" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaCarreraUniversitariaCod" FunctionName="gestionmatriculaModel.Store.RetornaCarreraUniversitariaCod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCarreraUniversitariaCod_Result">
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="DirecciónCarrera" ColumnName="DirecciónCarrera" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaDireccionCarrera" FunctionName="gestionmatriculaModel.Store.RetornaDireccionCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaDireccionCarrera_Result">
+                <ScalarProperty Name="id_DireccionCarrera" ColumnName="id_DireccionCarrera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Subdirector" ColumnName="Subdirector" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaDireccionCarreraCod" FunctionName="gestionmatriculaModel.Store.RetornaDireccionCarreraCod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaDireccionCarreraCod_Result">
+                <ScalarProperty Name="id_DireccionCarrera" ColumnName="id_DireccionCarrera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Subdirector" ColumnName="Subdirector" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaSedesUniversitarias" FunctionName="gestionmatriculaModel.Store.RetornaSedesUniversitarias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaSedesUniversitarias_Result">
+                <ScalarProperty Name="id_SedeUniversitaria" ColumnName="id_SedeUniversitaria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="DireccionFisica" ColumnName="DireccionFisica" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaSedesUniversitariasCod" FunctionName="gestionmatriculaModel.Store.RetornaSedesUniversitariasCod">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaSedesUniversitariasCod_Result">
+                <ScalarProperty Name="id_SedeUniversitaria" ColumnName="id_SedeUniversitaria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="DireccionFisica" ColumnName="DireccionFisica" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaDireccionCarreraID" FunctionName="gestionmatriculaModel.Store.RetornaDireccionCarreraID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaDireccionCarreraID_Result">
+                <ScalarProperty Name="id_DireccionCarrera" ColumnName="id_DireccionCarrera" />
+                <ScalarProperty Name="id_Director" ColumnName="id_Director" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="id_Subdirector" ColumnName="id_Subdirector" />
+                <ScalarProperty Name="Subdirector" ColumnName="Subdirector" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaCarreraUniversitariaID" FunctionName="gestionmatriculaModel.Store.RetornaCarreraUniversitariaID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCarreraUniversitariaID_Result">
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="id_DireccionCarrera" ColumnName="id_DireccionCarrera" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="DirecciónCarrera" ColumnName="DirecciónCarrera" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaSedesUniversitariasID" FunctionName="gestionmatriculaModel.Store.RetornaSedesUniversitariasID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaSedesUniversitariasID_Result">
+                <ScalarProperty Name="id_SedeUniversitaria" ColumnName="id_SedeUniversitaria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="id_Funcionario" ColumnName="id_Funcionario" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="DireccionFisica" ColumnName="DireccionFisica" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarSedesUniversitarias" FunctionName="gestionmatriculaModel.Store.ActualizarSedesUniversitarias" />
+          <FunctionImportMapping FunctionImportName="AgregarSedeUniversitaria" FunctionName="gestionmatriculaModel.Store.AgregarSedeUniversitaria" />
+          <FunctionImportMapping FunctionImportName="AgregarCursosPorCarreras" FunctionName="gestionmatriculaModel.Store.AgregarCursosPorCarreras" />
+          <EntitySetMapping Name="CursosPorCarreras">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.CursosPorCarreras">
+              <MappingFragment StoreEntitySet="CursosPorCarreras">
+                <ScalarProperty Name="id_CursoPorCarrera" ColumnName="id_CursoPorCarrera" />
+                <ScalarProperty Name="id_CursoRequisito" ColumnName="id_CursoRequisito" />
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ActualizarCursosPorCarrera" FunctionName="gestionmatriculaModel.Store.ActualizarCursosPorCarrera" />
+          <FunctionImportMapping FunctionImportName="RetornaCursoPorCarrera" FunctionName="gestionmatriculaModel.Store.RetornaCursoPorCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCursoPorCarrera_Result">
+                <ScalarProperty Name="id_CursoPorCarrera" ColumnName="id_CursoPorCarrera" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Curso_Requerido" ColumnName="Curso Requerido" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaCursoPorCarreraID" FunctionName="gestionmatriculaModel.Store.RetornaCursoPorCarreraID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCursoPorCarreraID_Result">
+                <ScalarProperty Name="id_CursoPorCarrera" ColumnName="id_CursoPorCarrera" />
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="id_CursoRequisito" ColumnName="id_CursoRequisito" />
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="Curso_Requisito" ColumnName="Curso Requisito" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="Carrera_Universitaria" ColumnName="Carrera Universitaria" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EliminarCursoPorCarrera" FunctionName="gestionmatriculaModel.Store.EliminarCursoPorCarrera" />
+          <EntitySetMapping Name="CuatrimestreXSede">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.CuatrimestreXSede">
+              <MappingFragment StoreEntitySet="CuatrimestreXSede">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="PeriodoLectivo" ColumnName="PeriodoLectivo" />
+                <ScalarProperty Name="id_SedeUniversitaria" ColumnName="id_SedeUniversitaria" />
+                <ScalarProperty Name="id_CuatrimestreXSede" ColumnName="id_CuatrimestreXSede" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AgregarCuatrimestresxSede" FunctionName="gestionmatriculaModel.Store.AgregarCuatrimestresxSede" />
+          <FunctionImportMapping FunctionImportName="RetornaCuatrimestreXSede" FunctionName="gestionmatriculaModel.Store.RetornaCuatrimestreXSede">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCuatrimestreXSede_Result">
+                <ScalarProperty Name="id_CuatrimestreXSede" ColumnName="id_CuatrimestreXSede" />
+                <ScalarProperty Name="id_SedeUniversitaria" ColumnName="id_SedeUniversitaria" />
+                <ScalarProperty Name="SedeUniversitaria" ColumnName="SedeUniversitaria" />
+                <ScalarProperty Name="PeriodoLectivo" ColumnName="PeriodoLectivo" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaCuatrimestreXSedeID" FunctionName="gestionmatriculaModel.Store.RetornaCuatrimestreXSedeID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaCuatrimestreXSedeID_Result">
+                <ScalarProperty Name="id_CuatrimestreXSede" ColumnName="id_CuatrimestreXSede" />
+                <ScalarProperty Name="id_SedeUniversitaria" ColumnName="id_SedeUniversitaria" />
+                <ScalarProperty Name="SedeUniversitaria" ColumnName="SedeUniversitaria" />
+                <ScalarProperty Name="PeriodoLectivo" ColumnName="PeriodoLectivo" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AgregarOfertasAcademidas" FunctionName="gestionmatriculaModel.Store.AgregarOfertasAcademidas" />
+          <FunctionImportMapping FunctionImportName="RetornaOfertaAcademica" FunctionName="gestionmatriculaModel.Store.RetornaOfertaAcademica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaOfertaAcademica_Result">
+                <ScalarProperty Name="id_OfertaAcademica" ColumnName="id_OfertaAcademica" />
+                <ScalarProperty Name="id_CuatrimestreXSede" ColumnName="id_CuatrimestreXSede" />
+                <ScalarProperty Name="id_Curso" ColumnName="id_Curso" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="cuposDisponibles" ColumnName="cuposDisponibles" />
+                <ScalarProperty Name="PeriodoLectivo" ColumnName="PeriodoLectivo" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="NombreSede" ColumnName="NombreSede" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ConsultaOfertaAcademica" FunctionName="gestionmatriculaModel.Store.ConsultaOfertaAcademica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.ConsultaOfertaAcademica_Result">
+                <ScalarProperty Name="Id_Curso" ColumnName="Id_Curso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="id_OfertaAcademica" ColumnName="id_OfertaAcademica" />
+                <ScalarProperty Name="CuposDisponibles" ColumnName="CuposDisponibles" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Matriculas">
+            <EntityTypeMapping TypeName="gestionmatriculaModel.Matriculas">
+              <MappingFragment StoreEntitySet="Matriculas">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="id_OfertaAcademica" ColumnName="id_OfertaAcademica" />
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="id_Matricula" ColumnName="id_Matricula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AgregarMatricula" FunctionName="gestionmatriculaModel.Store.AgregarMatricula" />
+          <FunctionImportMapping FunctionImportName="RetornaMatriculaIdEstudiante" FunctionName="gestionmatriculaModel.Store.RetornaMatriculaIdEstudiante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaMatriculaIdEstudiante_Result">
+                <ScalarProperty Name="id_Estudiante" ColumnName="id_Estudiante" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="id_CarreraUniversitaria" ColumnName="id_CarreraUniversitaria" />
+                <ScalarProperty Name="id_OFertaAcademica" ColumnName="id_OFertaAcademica" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaNotasPorCurso" FunctionName="gestionmatriculaModel.Store.RetornaNotasPorCurso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaNotasPorCurso_Result">
+                <ScalarProperty Name="id_Matricula" ColumnName="id_Matricula" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ActualizaNota" FunctionName="gestionmatriculaModel.Store.ActualizaNota" />
+          <FunctionImportMapping FunctionImportName="RetornaNotas" FunctionName="gestionmatriculaModel.Store.RetornaNotas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaNotas_Result">
+                <ScalarProperty Name="id_Matricula" ColumnName="id_Matricula" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

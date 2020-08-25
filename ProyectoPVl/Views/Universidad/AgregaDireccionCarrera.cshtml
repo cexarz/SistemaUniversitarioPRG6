@@ -1,0 +1,35 @@
+﻿
+<h3>Agregar dirección de carrera</h3><br />
+
+<form id="frmDireccionCarrera" method="post">
+
+	<div align="center">
+		<label>Nombre:</label>
+		<input type="text" name="Nombre" id="Nombre" class="form-control" /><br />
+	</div>
+
+	<div  align="center">
+		<label>Código:</label>
+		<input type="text" name="Codigo" id="Codigo" class="form-control" /><br />
+	</div>
+
+	<div  align="center">
+		<label>Director:</label>
+		<select name="Director" id="Director" class="form-control"></select><br />
+	</div>
+
+	<div  align="center">
+		<label>Subdirector:</label>
+		<select name="subDirector" id="subDirector" class="form-control"></select>
+	</div>
+    <br />
+	<div  align="center">
+		<input type="button" value="Ingresar" id="btnIngresar" class="btn-primary"/>
+	</div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/AgregaDireccionCarrera.js"></script>
+}
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c41fd9500cda4dc0b34a7c017724e43a" Name="Diagram1">
+        <EntityTypeShape EntityType="gestionmatriculaModel.Canton" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.CarrerasUniversitarias" Width="1.5" PointX="15" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.Cursos" Width="1.5" PointX="15" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.DireccionesCarreras" Width="1.5" PointX="12.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.Distrito" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.Estudiantes" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.Funcionarios" Width="1.5" PointX="10.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.OfertasAcademicas" Width="1.5" PointX="17.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.Provincia" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.SedesUniversitarias" Width="1.5" PointX="12.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Canton_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Distrito_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Estudiantes_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Funcionarios_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_SedesUniversitarias_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_CarrerasUniversitarias_DireccionesCarreras" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_OfertasAcademicas_Cursos" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_DireccionesCarreras_Funcionarios" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_DireccionesCarreras_Funcionarios1" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Estudiantes_Distrito" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Funcionarios_Distrito" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_SedesUniversitarias_Distrito" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Estudiantes_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Funcionarios_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_SedesUniversitarias_Funcionarios" ManuallyRouted="false" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_SedesUniversitarias_Provincia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.tblUsuario" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.CursosPorCarreras" Width="1.5" PointX="17.25" PointY="10.75" />
+        <AssociationConnector Association="gestionmatriculaModel.FK__CursosPor__id_Ca__5E8A0973" />
+        <AssociationConnector Association="gestionmatriculaModel.FK__CursosPor__id_Cu__5D95E53A" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.CuatrimestreXSede" Width="1.5" PointX="15" PointY="2.75" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_CuatrimestreXSede_SedesUniversitarias" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_OfertasAcademicas_CuatrimestreXSede" />
+        <EntityTypeShape EntityType="gestionmatriculaModel.Matriculas" Width="1.5" PointX="19.5" PointY="3.75" />
+        <AssociationConnector Association="gestionmatriculaModel.FK__Matricula__id_Ca__7C1A6C5A" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Matriculas_CarrerasUniversitarias" />
+        <AssociationConnector Association="gestionmatriculaModel.FK__Matricula__id_Es__7B264821" />
+        <AssociationConnector Association="gestionmatriculaModel.FK_Matriculas_Estudiantes" />
+        <AssociationConnector Association="gestionmatriculaModel.FK__Matricula__id_Of__7D0E9093" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

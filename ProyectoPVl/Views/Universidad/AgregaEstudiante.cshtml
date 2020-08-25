@@ -1,0 +1,23 @@
+﻿
+<h3 style="color: #820707" align="center">Agregar nuevo estudiante</h3> <br />
+
+<form id="frmAgregaEstudiante" method="post" aling="center">
+
+	<div align="center">
+		<label>Fecha de inicio:</label> <br /><br />
+		<input type="date" name="Fecha_Inicio" id="Fecha_Inicio" class="form-control text-center" />
+	</div>
+
+	@Html.Partial("VistaComAgregarUsuarios")
+	<br />
+	<div align="center">
+		<input type="submit" value="Ingresar" id="btnIngresar" class="btn-primary" />
+	</div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/Geografia.js"></script>
+	<script src="~/Scripts/Universidad/AgregaEstudiante.js"></script>
+}
+

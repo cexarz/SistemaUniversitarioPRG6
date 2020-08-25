@@ -1,0 +1,39 @@
+﻿@model ProyectoPVl.Models.RetornaCursoPorCarreraID_Result
+
+<h3>Eliminar curso de carrera</h3><br />
+
+<input type="hidden" id="id_CursoPorCarrera" value="@Model.id_CursoPorCarrera" />
+
+<form id="frmEliminaCursoxCarrera" method="post">
+
+	<div align="center">
+		<label>Carrera:</label>
+		<input type="text" name="Carrera" id="Carrera" class="form-control" value="@Model.Carrera_Universitaria" readonly />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Curso:</label>
+		<input type="text" name="Curso" id="Curso" class="form-control" value="@Model.Curso" readonly />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Curso requerido:</label>
+		<input type="text" name="CursoRequisito" id="CursoRequisito" class="form-control" value="@Model.Curso_Requisito" readonly />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<input type="button" value="Eliminar" id="btnEliminar" class="btn-danger" />
+	</div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/EliminaCursoxCarrera.js"></script>
+}
+

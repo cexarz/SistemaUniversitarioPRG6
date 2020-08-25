@@ -1,0 +1,99 @@
+﻿@model ProyectoPVl.Models.RetornaEstudianteID_Result
+
+	<style>
+		.ui-datepicker-calendar {
+			display: none;
+		}
+
+		.ui-datepicker-month {
+			display: none;
+		}
+
+		.ui-datepicker-prev {
+			display: none;
+		}
+
+		.ui-datepicker-next {
+			display: none;
+		}
+	</style>
+
+<h2>Consultar oferta académica</h2>
+
+<form id="frmConsultaOferta" method="post">
+	<input type="hidden" id="idEstudiante" value="@Model.id_Estudiante" />
+
+	<div align="center">
+		<label>Nombre del estudiante</label>
+		<input type="text" name="nombreEstudiante" id="nombreEstudiante" class="form-control" value="@Model.NombreCompleto" readonly />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Carrera:</label>
+		<select name="Carrera" id="Carrera" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Sede:</label>
+		<select name="Sede" id="Sede" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Cuatrimestre:</label>
+		<select name="Cuatrimestre" id="Cuatrimestre" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label for="Ano">Año:</label>
+		<input type="text" name="Ano" id="Ano" class="form-control" />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<input type="button" value="Consultar" id="btnConsultar" class="btn-primary" />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<input type="button" value="Matricular" id="btnMatricular" class="btn btn-success" disabled />
+	</div>
+
+	<br />
+
+	<div id="divKendoGrid">
+
+	</div>
+
+</form>
+
+<div id="divDialog" hidden>
+	<form id="frmMatricular" method="post">
+
+		<br />
+
+		<div align="center">
+			<label>Seleccione el curso:</label>
+			<select name="Curso" id="Curso" class="form-control"></select>
+		</div>
+
+		<br />
+
+		<div align="center">
+			<input type="button" value="Agregar" id="btnAgregar" class="btn btn-success" />
+		</div>
+	</form>
+</div>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/ConsultarOfertaXEstudiante.js"></script>
+}

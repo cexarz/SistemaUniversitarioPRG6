@@ -1,0 +1,44 @@
+﻿
+<h3 >Agregar nuevo funcionario</h3><br />
+
+<form id="frmAgregaFuncionario" method="post" align="center">
+
+	<div align="center">
+		<label>Fecha de contratación:</label>
+		<input type="date" name="FechaContratacion" id="FechaContratacion" class="form-control" />
+	</div>
+    <br />
+    <div class="form-check">
+        <label>Tipo de usuario:</label>&nbsp;
+        <input type="radio" name="tipoUsuario" value="Consultor" class="form-check-input" checked />&nbsp;Consultor  &nbsp;
+        <input type="radio" name="tipoUsuario" value="Administrador" class="form-check-input" />Administrador
+    </div>
+
+	<br />
+
+	<div id="divDialog" hidden>
+		<div class="form-group">
+			<label>Contraseña:</label>
+			<input type="password" name="Contrasena" id="Contrasena" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label>Corfimación de contraseña:</label>
+			<input type="password" name="ConfirmaContrasena" id="ConfirmaContrasena" class="form-control" />
+		</div>
+		<div class="form-group">
+			<input type="button" value="Guardar" id="btnGuardar" />
+		</div>
+	</div>
+
+	@Html.Partial("VistaComAgregarUsuarios")
+<br />
+	<div class="form-group">
+		<input type="button" value="Ingresar" id="btnIngresar" class="btn-primary" />
+	</div>
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/Geografia.js"></script>
+	<script src="~/Scripts/Universidad/AgregaFuncionario.js"></script>
+}

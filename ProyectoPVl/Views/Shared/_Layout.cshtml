@@ -1,0 +1,209 @@
+﻿@*@{
+    ProyectoPVl.Models.RetornaUsuarioCorreo_Result modelo =
+        (ProyectoPVl.Models.RetornaUsuarioCorreo_Result)this.Session["datosUsuario"];
+    string urlLogin = this.Url.Action("Index", "Login");
+    string urlCierreSesion = this.Url.Action("CerrarSesion", "Login");
+    //variable para consultar si la sesion fue iniciada
+    bool sesionIniciada = false;
+    if (this.Session["logueado"] != null)
+    {
+        sesionIniciada = Convert.ToBoolean(this.Session["logueado"]);
+    }
+  }*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("css", required: false)
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link href="https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.blueopal.min.css" rel="stylesheet" />
+    <link href="~/Content/titulos.css" rel="stylesheet" />
+    <link href="~/Content/navbar.css" rel="stylesheet" />
+    <link href="~/Content/footer.css" rel="stylesheet" />
+    <link href="~/Content/dropdown.css" rel="stylesheet" />
+
+</head>
+
+<body >
+    @*<nav class="navbar navbar-default  navbar-fixed-top" >
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/Inicio/Universidad"><img src="~/Imagenes/logo-fondooscuro.png"  width="85" /></a>
+               </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="~/Inicio/Bienvenida">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes de Notas <span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="">Reporte de Notas por Curso</a></li>
+                            <li><a href="">Reporte de Notas por Estudiante</a></li>
+
+                        </ul>
+                    </li>
+
+
+                    @{
+
+                        if (sesionIniciada == true)
+                        {
+                            if (modelo.TipoUsuario == "Administrador")
+                            {
+
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Registro y Matrícula</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">Agregar <span class="caret"></span></a>
+                                            <ul class="dropdown-menu sub-menu">
+                                                <li><a href="~/Universidad/AgregaEstudiante">Estudiantes</a></li>
+                                                <li><a href="~/Universidad/AgregaFuncionario">Funcionarios</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Contol de Universidad</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="#">Agregar <span class="caret"></span></a>
+                                            <ul class="dropdown-menu sub-menu">
+                                                <li><a href="~/Universidad/AgregaCurso">Curso</a></li>
+                                                <li><a href="~/Universidad/AgregaCarrera">Carrera</a></li>
+                                                <li><a href="~/Universidad/AgregaCursoXCarrera">Curso Por Carrera</a></li>
+                                                <li><a href="~/Universidad/BuscaCuatrimestreXSede">Cuatrimestre</a></li>
+                                                <li><a href="~/Universidad/AgregaDireccionCarrera">Direccion Carrera</a></li>
+                                                <li><a href="~/Universidad/AgregaSede">Sedes</a></li>
+                                            </ul>
+
+                                        </li>
+                                        
+                                            <li>
+                                                <a href="#">Buscar <span class="caret"></span></a>
+                                                <ul class="dropdown-menu sub-menu">
+                                                    <li><a href="~/Universidad/BuscaCurso">Curso</a></li>
+                                                    <li><a href="~/Universidad/BuscaCarrera">Carrera</a></li>
+                                                    <li><a href="~/Universidad/BuscaCursoXCarrera">Curso Por Carrera</a></li>
+                                                    <li><a href="~/Universidad/BuscaDireccionCarrera">Direccion Carrera</a></li>
+                                                    <li><a href="~/Universidad/BuscaSede">Sedes</a></li>
+
+                                                </ul>
+                                            </li>
+                                        
+                                    </ul>
+                                </li>
+
+
+                            }
+                            else
+                            {
+                                if (modelo.TipoUsuario == "Consultor")
+                                {
+
+                                }
+                            }
+
+
+                        }
+                    }
+                </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="~/Inicio/Contacto">Contáctenos</a></li>
+                            <li><a id="linkCerrarSesion" href="#">Cerrar Sesión</a></li>
+                        </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @{
+            if (sesionIniciada == true)
+            {*@
+
+                @RenderBody();
+            @*}
+            else
+            {
+                this.Response.Redirect(urlLogin);
+            }
+        }
+        <hr />
+        <div id="divCerrarSesion" hidden>
+            <p>¿Desea cerrar la sesión?</p>
+            <button id="btnSi">Sí</button>
+            <button id="btnNo">No</button>
+
+
+        </div>
+        <div class="footer">
+            <p>&copy; @DateTime.Now.Year - Universidad Castro Carazo</p>
+        </div>
+    </div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/scriptsGenericos")
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jszip.min.js"></script>
+    @*<script>
+			$(function () {
+			  crearEventos();
+			});
+			function crearEventos() {
+
+				$("#divCerrarSesion").dialog({
+					autoOpen: false,
+					heigt: 150,
+					width: 200,
+					modal: true,
+					title: 'Cerrar Sesión',
+					resizable: false
+				});
+				//evento click del lknCerrarSesion
+				$("#linkCerrarSesion").click(function () {
+					$("#divCerrarSesion").dialog("open");
+				});
+				//evento click del boton btnNo
+				$("#btnNo").click(function () {
+					$("#divCerrarSesion").dialog("close");
+				});
+
+				//evento click del boton btnSi
+				$("#btnSi").click(function () {
+					var id = $("#Usuario").val()
+
+					var url = '/Login/ActualizarFecha';
+					var parametros = {
+						id_Usuario: id
+					}
+					var funcion = ResultadoActualizaFecha;
+					ejecutaAjax(url,parametros,funcion)
+					window.location.href = "@urlCierreSesion"
+
+				});
+			}
+			function ResultadoActualizaFecha(data) {
+				alert(data)
+			};
+    </script>*@
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

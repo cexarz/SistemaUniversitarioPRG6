@@ -1,0 +1,21 @@
+﻿@model ProyectoPVl.Models.RetornaEstudianteID_Result
+
+<h3>Eliminar a estudiante</h3>
+
+<form id="frmEliminaEstudiante" method="post">
+	<input type="hidden" id="identificadorFecha" value="@Model.Fecha_Inicio" />
+
+	<div  align="center">
+		<label>Fecha de inicio:</label>
+		<input type="text" name="Fecha_Inicio" id="Fecha_Inicio" class="form-control" readonly />
+	</div>
+
+	@Html.Partial("VistaComEliminarUsuarios")
+
+</form>
+
+@section scripts{
+	<script src="~/Scripts/Universidad/Geografia.js"></script>
+	<script src="~/Scripts/Universidad/EliminaUsuario.js"></script>
+}
+

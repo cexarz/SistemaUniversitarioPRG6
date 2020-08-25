@@ -1,0 +1,101 @@
+﻿<h2>Registro de notas</h2>
+
+<style>
+	.ui-datepicker-calendar {
+		display: none;
+	}
+
+	.ui-datepicker-month {
+		display: none;
+	}
+
+	.ui-datepicker-prev {
+		display: none;
+	}
+
+	.ui-datepicker-next {
+		display: none;
+	}
+</style>
+
+<form id="frmConsultaNotas" method="post">
+
+	<br />
+
+	<div align="center">
+		<label>Sede:</label>
+		<select name="Sede" id="Sede" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label for="Ano">Año:</label>
+		<input type="text" name="Ano" id="Ano" class="form-control" />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Cuatrimestre:</label>
+		<select name="Cuatrimestre" id="Cuatrimestre" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<label>Seleccione el curso:</label>
+		<select name="Curso" id="Curso" class="form-control"></select>
+	</div>
+
+	<br />
+
+	<div align="center">
+		<input type="button" value="Consultar" id="btnConsultar" class="btn-primary" />
+	</div>
+
+	<br />
+
+	<div align="center">
+		<input type="button" value="Modificar notas" id="btnModificarNota" class="btn btn-warning" disabled />
+	</div>
+
+	<br />
+
+	<div id="divKendoGrid">
+
+	</div>
+
+</form>
+
+<div id="divDialog" hidden>
+	<form id="frmModificaNota" method="post">
+
+		<br />
+		<br />
+
+		<div align="center">
+			<label>Seleccione el estudiante:</label>
+			<select name="Estudiante" id="Estudiante" class="form-control"></select>
+		</div>
+
+		<br />
+
+		<div align="center">
+			<label>Nueva nota:</label>
+			<input type="text" name="Nota" id="Nota" class="form-control" /> <br />
+		</div>
+
+		<br />
+
+		<div align="center">
+			<input type="button" value="Modificar" id="btnModificar" class="btn btn-warning" />
+		</div>
+	</form>
+</div>
+
+
+
+@section scripts{
+	<script src="~/Scripts/Universidad/RegistroNotas.js"></script>
+}
