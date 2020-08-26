@@ -1,4 +1,4 @@
-﻿@*@{
+﻿@{
     ProyectoPVl.Models.RetornaUsuarioCorreo_Result modelo =
         (ProyectoPVl.Models.RetornaUsuarioCorreo_Result)this.Session["datosUsuario"];
     string urlLogin = this.Url.Action("Index", "Login");
@@ -9,7 +9,7 @@
     {
         sesionIniciada = Convert.ToBoolean(this.Session["logueado"]);
     }
-  }*@
+  }
 <!DOCTYPE html>
 
 <html>
@@ -32,7 +32,7 @@
 </head>
 
 <body >
-    @*<nav class="navbar navbar-default  navbar-fixed-top" >
+    <nav class="navbar navbar-default  navbar-fixed-top" >
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -51,7 +51,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes de Notas <span class="caret"></span></a>
 
                         <ul class="dropdown-menu">
-                            <li><a href="">Reporte de Notas por Curso</a></li>
+                            <li><a href="~/Universidad/ReporteNotas">Reporte de Notas por Curso</a></li>
                             <li><a href="">Reporte de Notas por Estudiante</a></li>
 
                         </ul>
@@ -71,10 +71,12 @@
                                         <li>
                                             <a href="#">Agregar <span class="caret"></span></a>
                                             <ul class="dropdown-menu sub-menu">
+                                                <li><a href="~/Universidad/BuscaCuatrimestreXSede">Cuatrimestre</a></li>
                                                 <li><a href="~/Universidad/AgregaEstudiante">Estudiantes</a></li>
                                                 <li><a href="~/Universidad/AgregaFuncionario">Funcionarios</a></li>
                                             </ul>
                                         </li>
+                                        <li> <a href="~/Universidad/BuscaEstudiante">Matrícula</a></li>
                                     </ul>
                                 </li>
 
@@ -87,11 +89,9 @@
                                                 <li><a href="~/Universidad/AgregaCurso">Curso</a></li>
                                                 <li><a href="~/Universidad/AgregaCarrera">Carrera</a></li>
                                                 <li><a href="~/Universidad/AgregaCursoXCarrera">Curso Por Carrera</a></li>
-                                                <li><a href="~/Universidad/BuscaCuatrimestreXSede">Cuatrimestre</a></li>
                                                 <li><a href="~/Universidad/AgregaDireccionCarrera">Direccion Carrera</a></li>
                                                 <li><a href="~/Universidad/AgregaSede">Sedes</a></li>
                                             </ul>
-
                                         </li>
                                         
                                             <li>
@@ -100,7 +100,7 @@
                                                     <li><a href="~/Universidad/BuscaCurso">Curso</a></li>
                                                     <li><a href="~/Universidad/BuscaCarrera">Carrera</a></li>
                                                     <li><a href="~/Universidad/BuscaCursoXCarrera">Curso Por Carrera</a></li>
-                                                    <li><a href="~/Universidad/BuscaDireccionCarrera">Direccion Carrera</a></li>
+                                                    <li><a href="~/Universidad/BuscaDireccionCarrera">Dirección Carrera</a></li>
                                                     <li><a href="~/Universidad/BuscaSede">Sedes</a></li>
 
                                                 </ul>
@@ -134,10 +134,10 @@
     <div class="container body-content">
         @{
             if (sesionIniciada == true)
-            {*@
+            {
 
                 @RenderBody();
-            @*}
+            }
             else
             {
                 this.Response.Redirect(urlLogin);
@@ -154,7 +154,7 @@
         <div class="footer">
             <p>&copy; @DateTime.Now.Year - Universidad Castro Carazo</p>
         </div>
-    </div>*@
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -162,7 +162,7 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jszip.min.js"></script>
-    @*<script>
+    <script>
 			$(function () {
 			  crearEventos();
 			});
@@ -202,7 +202,7 @@
 			function ResultadoActualizaFecha(data) {
 				alert(data)
 			};
-    </script>*@
+    </script>
 
     @RenderSection("scripts", required: false)
 </body>
