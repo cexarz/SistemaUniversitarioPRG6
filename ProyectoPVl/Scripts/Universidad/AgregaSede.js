@@ -18,7 +18,7 @@ function cargaDropdownListFuncionarios() {
 function procesarResultadoFuncionarios(data) {
 	var Director = $("#Director");
 
-	var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+	var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
 
 	Director.empty();
 	Director.append(nuevaOpcion);

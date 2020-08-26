@@ -53,25 +53,25 @@ function creaGridKendoBuscaDireccionCarrera(data) {
                 //proipiedad de la fuente de datos a mostrar
                 field: 'Nombre',
                 //texto del encabezado
-                title: 'Nombre de la dirección de carrera'
+                title: 'Nombre Carrera'
             },
             {
                 //proipiedad de la fuente de datos a mostrar
                 field: 'Codigo',
                 //texto del encabezado
-                title: 'Código de la dirección de carrera'
+                title: 'Código'
             },
             {
                 //proipiedad de la fuente de datos a mostrar
                 field: 'Director',
                 //texto del encabezado
-                title: 'Director de la dirección de carrera'
+                title: 'Director'
             },
             {
                 //proipiedad de la fuente de datos a mostrar
                 field: 'Subdirector',
                 //texto del encabezado
-                title: 'Subdirector de la dirección de carrera'
+                title: 'Subdirector'
             },
             {
                 title: "Acciones",

@@ -62,7 +62,7 @@ function cargaDropdownListDistritos(pIdCanton) {
 
 function procesarResultadoProvincias(data){
     var ddlProvincia = $("#id_Provincia");
-    var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+    var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
     ddlProvincia.empty();
     ddlProvincia.append(nuevaOpcion);
 
@@ -78,7 +78,7 @@ function procesarResultadoProvincias(data){
 
 function procesarResultadoCantones(data) {
     var ddlCanton = $("#id_Canton");
-    var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+    var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
     ddlCanton.empty();
     $("#id_Distrito").empty();
 
@@ -97,7 +97,7 @@ function procesarResultadoCantones(data) {
 
 function procesarResultadoDistritos(data) {
     var ddlDistrito = $("#id_Distrito");
-    var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+    var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
     ddlDistrito.empty();
     ddlDistrito.append(nuevaOpcion);
 

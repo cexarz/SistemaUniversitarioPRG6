@@ -42,7 +42,7 @@ function CreaEventosAgregaFuncionario() {
 				id_Distrito, FechaContratacion, tipoUsuario, contr);
 		}
 		else
-			alert("Contraseña vacia o ambas no coinciden")
+			alert("Contraseña vacía o ambas no coinciden")
 	});
 }
 

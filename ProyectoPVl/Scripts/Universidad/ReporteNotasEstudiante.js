@@ -46,7 +46,7 @@ function cargaDropdownListCursos() {
 function procesarResultadoCursos(data) {
 	var Curso = $("#Curso");
 
-	var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+	var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
 
 	Curso.empty();
 	Curso.append(nuevaOpcion);

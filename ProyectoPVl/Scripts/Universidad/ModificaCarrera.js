@@ -19,7 +19,7 @@ function cargaDropdownListDireccionCarrera() {
 function procesarResultadoDireccionCarrera(data) {
 	var direccionCarrera = $("#DireccionCarrera");
 
-	var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+	var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
 
 	direccionCarrera.empty();
 	direccionCarrera.append(nuevaOpcion);

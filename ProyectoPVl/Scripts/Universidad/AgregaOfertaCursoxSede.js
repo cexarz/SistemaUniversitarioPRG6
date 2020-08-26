@@ -19,7 +19,7 @@ function procesarResultadoCursos(data) {
 	var Curso = $("#Curso");
 	var CursoRequerido = $("#CursoRequisito");
 
-	var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+	var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
 
 	Curso.empty();
 	CursoRequerido.empty();
@@ -88,7 +88,7 @@ function ResultadoRetornaOfertaAcademica(data) {
 			IngresarOferta(Id_CuatrimestreXSede, Curso, Cupos);
 		}
 		else {
-			alert("Ya existe una misma oferta academica")
+			alert("Ya existe una misma oferta académica")
 		}
 	}
 }

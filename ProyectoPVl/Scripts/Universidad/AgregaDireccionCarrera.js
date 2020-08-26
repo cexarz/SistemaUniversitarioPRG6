@@ -19,7 +19,7 @@ function procesarResultadoFuncionarios(data) {
 	var Director = $("#Director");
 	var subDirector = $("#subDirector");
 
-	var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+	var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
 
 	Director.empty();
 	subDirector.empty();

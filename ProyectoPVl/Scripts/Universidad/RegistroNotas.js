@@ -33,7 +33,7 @@ function cargaDropdownListCarreras() {
 function procesarResultadoCarreras(data) {
 	var Carrera = $("#Carrera");
 
-	var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+	var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
 
 	Carrera.empty();
 	Carrera.append(nuevaOpcion);
@@ -119,7 +119,7 @@ function procesarResultadoCursos(data) {
 	var Curso = $("#Curso");
 	var CursoRequerido = $("#CursoRequisito");
 
-	var nuevaOpcion = "<option value=''>Seleccione una opcion</option>";
+	var nuevaOpcion = "<option value=''>Seleccione una opción</option>";
 
 	Curso.empty();
 	CursoRequerido.empty();
