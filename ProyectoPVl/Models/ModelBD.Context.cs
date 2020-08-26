@@ -877,5 +877,31 @@ namespace ProyectoPVl.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RetornaNotas_Result>("RetornaNotas", id_SedeUniversitariaParameter, anoParameter, cuatrimestreParameter, id_CursoParameter);
         }
+    
+        public virtual ObjectResult<RetornaNotasPorEstudiante_Result> RetornaNotasPorEstudiante(Nullable<int> id_Estudiante)
+        {
+            var id_EstudianteParameter = id_Estudiante.HasValue ?
+                new ObjectParameter("id_Estudiante", id_Estudiante) :
+                new ObjectParameter("id_Estudiante", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RetornaNotasPorEstudiante_Result>("RetornaNotasPorEstudiante", id_EstudianteParameter);
+        }
+    
+        public virtual ObjectResult<RetornaNotasPorEstudianteFiltro_Result> RetornaNotasPorEstudianteFiltro(string cuatrimestre, Nullable<int> id_Curso, Nullable<int> id_Estudiante)
+        {
+            var cuatrimestreParameter = cuatrimestre != null ?
+                new ObjectParameter("Cuatrimestre", cuatrimestre) :
+                new ObjectParameter("Cuatrimestre", typeof(string));
+    
+            var id_CursoParameter = id_Curso.HasValue ?
+                new ObjectParameter("id_Curso", id_Curso) :
+                new ObjectParameter("id_Curso", typeof(int));
+    
+            var id_EstudianteParameter = id_Estudiante.HasValue ?
+                new ObjectParameter("id_Estudiante", id_Estudiante) :
+                new ObjectParameter("id_Estudiante", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RetornaNotasPorEstudianteFiltro_Result>("RetornaNotasPorEstudianteFiltro", cuatrimestreParameter, id_CursoParameter, id_EstudianteParameter);
+        }
     }
 }

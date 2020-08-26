@@ -694,6 +694,14 @@
           <Parameter Name="Cuatrimestre" Type="varchar" Mode="In" />
           <Parameter Name="id_Curso" Type="int" Mode="In" />
         </Function>
+        <Function Name="RetornaNotasPorEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Estudiante" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RetornaNotasPorEstudianteFiltro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cuatrimestre" Type="varchar" Mode="In" />
+          <Parameter Name="id_Curso" Type="int" Mode="In" />
+          <Parameter Name="id_Estudiante" Type="int" Mode="In" />
+        </Function>
         <Function Name="RetornaOfertaAcademica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="RetornaProvincias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
@@ -1544,6 +1552,14 @@
             <Parameter Name="Cuatrimestre" Mode="In" Type="String" />
             <Parameter Name="id_Curso" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="RetornaNotasPorEstudiante" ReturnType="Collection(gestionmatriculaModel.RetornaNotasPorEstudiante_Result)">
+            <Parameter Name="id_Estudiante" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RetornaNotasPorEstudianteFiltro" ReturnType="Collection(gestionmatriculaModel.RetornaNotasPorEstudianteFiltro_Result)">
+            <Parameter Name="Cuatrimestre" Mode="In" Type="String" />
+            <Parameter Name="id_Curso" Mode="In" Type="Int32" />
+            <Parameter Name="id_Estudiante" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="RetornaCantones_Result">
           <Property Type="Int32" Name="id_Canton" Nullable="false" />
@@ -1987,6 +2003,26 @@
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
           <Property Type="Int32" Name="Nota" Nullable="true" />
           <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="RetornaNotasPorEstudiante_Result">
+          <Property Type="Int32" Name="id_Matricula" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Nota" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PeriodoLectivo" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ano" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Sede" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="RetornaNotasPorEstudianteFiltro_Result">
+          <Property Type="Int32" Name="id_Matricula" Nullable="false" />
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Nota" Nullable="true" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PeriodoLectivo" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Ano" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Sede" Nullable="false" MaxLength="20" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2600,6 +2636,34 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Nota" ColumnName="Nota" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaNotasPorEstudiante" FunctionName="gestionmatriculaModel.Store.RetornaNotasPorEstudiante">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaNotasPorEstudiante_Result">
+                <ScalarProperty Name="id_Matricula" ColumnName="id_Matricula" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PeriodoLectivo" ColumnName="PeriodoLectivo" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Sede" ColumnName="Sede" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RetornaNotasPorEstudianteFiltro" FunctionName="gestionmatriculaModel.Store.RetornaNotasPorEstudianteFiltro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="gestionmatriculaModel.RetornaNotasPorEstudianteFiltro_Result">
+                <ScalarProperty Name="id_Matricula" ColumnName="id_Matricula" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PeriodoLectivo" ColumnName="PeriodoLectivo" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Sede" ColumnName="Sede" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -1175,7 +1175,8 @@ namespace ProyectoPVl.Controllers
 
 		#region Reportes
 
-        public ActionResult ReporteNotas()
+		#region Reporte de notas por curso
+		public ActionResult ReporteNotas()
 		{
             return View();
 		}
@@ -1189,6 +1190,45 @@ namespace ProyectoPVl.Controllers
                 resultado = listaNotas
             });
         }
+
+        #endregion
+
+        #region 
+
+        public ActionResult BuscaEstudianteConsultaNotas()
+		{
+            return View();
+		}
+
+        public ActionResult ReporteNotasEstudiante(int id_Estudiante)
+        {
+            RetornaEstudianteID_Result modeloVista = this.modeloBD.RetornaEstudianteID(id_Estudiante).FirstOrDefault();
+            return View(modeloVista);
+        }
+
+        public ActionResult RetornaNotasIdEstudiante(int id_Estudiante)
+        {
+            List<RetornaNotasPorEstudiante_Result> listaNotas
+                = this.modeloBD.RetornaNotasPorEstudiante(id_Estudiante).ToList();
+
+            return Json(new
+            {
+                resultado = listaNotas
+            });
+        }
+
+        public ActionResult RetornaNotasIdEstudianteFiltro(string cuatrimestre, int id_Curso, int id_Estudiante)
+        {
+            List<RetornaNotasPorEstudianteFiltro_Result> listaNotas
+                = this.modeloBD.RetornaNotasPorEstudianteFiltro(cuatrimestre, id_Curso, id_Estudiante).ToList();
+
+            return Json(new
+            {
+                resultado = listaNotas
+            });
+        }
+
+        #endregion
 
         #endregion
 

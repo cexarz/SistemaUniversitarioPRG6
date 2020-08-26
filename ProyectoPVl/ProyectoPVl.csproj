@@ -257,6 +257,12 @@
     <Compile Include="Models\RetornaNotasPorCurso_Result.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RetornaNotasPorEstudianteFiltro_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RetornaNotasPorEstudiante_Result.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RetornaNotas_Result.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
@@ -353,6 +359,7 @@
     <Content Include="Scripts\Universidad\BuscaCursoxCarrera.js" />
     <Content Include="Scripts\Universidad\BuscaDireccionCarrera.js" />
     <Content Include="Scripts\Universidad\BuscaEstudiante.js" />
+    <Content Include="Scripts\Universidad\BuscaEstudianteConsultaNotas.js" />
     <Content Include="Scripts\Universidad\BuscaFuncionario.js" />
     <Content Include="Scripts\Universidad\BuscaSede.js" />
     <Content Include="Scripts\Universidad\ConsultarOfertaXEstudiante.js" />
@@ -372,6 +379,7 @@
     <Content Include="Scripts\Universidad\ModificaSede.js" />
     <Content Include="Scripts\Universidad\RegistroNotas.js" />
     <Content Include="Scripts\Universidad\ReporteNotas.js" />
+    <Content Include="Scripts\Universidad\ReporteNotasEstudiante.js" />
     <Content Include="Scripts\ValidacionesGenericas.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -428,6 +436,8 @@
     <Content Include="Views\Inicio\Contacto.cshtml" />
     <Content Include="Views\Universidad\RegistroNotas.cshtml" />
     <Content Include="Views\Universidad\ReporteNotas.cshtml" />
+    <Content Include="Views\Universidad\BuscaEstudianteConsultaNotas.cshtml" />
+    <Content Include="Views\Universidad\ReporteNotasEstudiante.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
