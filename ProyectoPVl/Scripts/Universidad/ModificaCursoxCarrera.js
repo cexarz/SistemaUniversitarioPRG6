@@ -78,7 +78,7 @@ function Validaciones() {
 			Carrera: {
 				required: true
 			},
-			CursoRequerido: {
+			CursoRequisito: {
 				required: true
 			},
 		}
